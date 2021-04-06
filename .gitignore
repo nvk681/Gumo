@@ -1,0 +1,5 @@
+# IDE/Editor Junk:
+.sonarlint/
+.vscode/
+.idea/
+.node_modules

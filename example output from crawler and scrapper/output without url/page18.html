@@ -1,0 +1,3131 @@
+                                                                                                                                                                   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[f.now()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,t){s[t]=o(d+t,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(l+"tracer",[f.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return t.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],n),e}finally{c.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=o(l+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,f.now()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],4:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o,i){if(!d.aborted||i){e&&e(n,r,o);for(var a=t(o),u=m(n),c=u.length,f=0;f<c;f++)u[f].apply(a,r);var p=s[y[n]];return p&&p.push([b,n,r,a]),a}}function l(e,t){v[e]=m(e).concat(t)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(n)}function g(e,t){f(e,function(e,n){t=t||"feature",y[n]=t,t in s||(s[t]=[])})}var v={},y={},b={on:l,emit:n,get:w,listeners:m,context:t,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},p={},d=t.exports=o();d.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=h.info=NREUM.info,t=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return s.abort();f(y,function(t,n){e[t]||(e[t]=n)}),c("mark",["onload",a()+h.offset],null,"api");var n=d.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===d.readyState&&i()}function i(){c("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),c=e("handle"),f=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=t.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+    <link rel="shortcut icon" href="/themes/bootstrap/images/favicon.ico" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/css/bootstrap-wizard.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.8.16.custom.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/css/tokenfield.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/fonts/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/css/style.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/css/style1.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/css/build.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/css/star-rating.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/css/introjs.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/handsontable/jquery.handsontable.full.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/handsontable/jquery.handsontable.bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/5116c520/fileuploader.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/c598585/chosen.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/5460bb78/shadowbox.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/92d23134/autoSuggest.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/6fd9c184/css/jquery.tagedit.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/a477c4f/jquery.mentionsInput.css" />
+<link rel="stylesheet" type="text/css" href="https://d6fdgn2cftjoe.cloudfront.net/237abf24/css/jquery_notification.css" />
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/b2e283e8/jquery.min.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/b2e283e8/jui/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/darwinboxjs/default-darwinbox.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/bootstrap-wizard.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/bootstrap-treeview.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/star-rating.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/tokenfield.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/knockout.3.0.0.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/knockout.validation.3.0.0.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/jquery-migrate-1.0.0.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/jquery.simpler-sidebar.min.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/intro.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/jquery.combinedScroll.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/handsontable/jquery.handsontable.full.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/4573f0c2/js/sticky.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/5116c520/fileuploader.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/c598585/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/5460bb78/shadowbox.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/7808f930/knockout.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/7808f930/knockout.mapping-latest.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/34123ecd/oauthpopup.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/92d23134/jquery.autoSuggest.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/fa864f73/jquery.expander.min.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/6fd9c184/js/jquery.autoGrowInput.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/6fd9c184/js/jquery.tagedit-1.2.0.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/a477c4f/lib/underscore-min.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/a477c4f/lib/jquery.events.input.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/a477c4f/jquery.mentionsInput.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/76f33c13/timeclock.js"></script>
+<script type="text/javascript" src="https://d6fdgn2cftjoe.cloudfront.net/237abf24/js/jquery_notification_v.1.js"></script>
+<title id="darwinbox-title-id">Darwinbox</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+<body>
+    <div class="topbar">
+        <div class="portlet" id="yw0">
+<div class="portlet-content">
+<style>
+.logoheader{
+  /*width: 150px;
+  height: 50px;*/
+  margin: 0px;
+}
+</style>
+<div class="main-navigation">   
+  <div class="col-sm-2 col-xs-7">
+    <div class="logo logoheader">
+     <!--  <a href="#"><img src="" alt="logo"></a> -->
+     <a href="/"><img style="" src="/messages/showimage/filename/tenant-avatar-11_2054837946.png/adaptive/true" alt="Darwinbox" /></a>  </div>
+</div>
+<div class="col-sm-2 col-xs-5 hidden-sm hidden-md hidden-lg">
+  <div class="right-menu text-right">
+    <ul>
+      <li>
+        <form action="" class="search-form">
+         <div class="form-group has-feedback" id="search-form-right">
+          <label for="search" class="sr-only">Search</label>
+          <input type="text" class="form-control" name="search" id="search" placeholder="search">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+      </form>
+    </li>
+    <li>
+      <a href="#"><img src="" class="main-dp img-circle" alt=".." /></a>
+    </li>
+  </ul>
+</div>
+</div>
+<div class="col-sm-8">
+  <div class="clearfix"></div>
+  <nav class="navbar navbar-menu">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+        <span class="navbars"> <i class="fa fa-bars"></i></span>
+      </button>
+      <a class="navbar-brand hidden-lg hidden-md hidden-sm" href="#">Navigation</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="menu_list">
+                                                                                                                                                                                                                                          <!-- PMS -->
+                                                      <!-- PMS -->
+              <!-- Recruitment -->
+                                                              <!-- Recruitment -->
+                <!-- Reimbursement -->
+                                                                <!-- Reimbursement -->
+                <li><a href=/ class="dashboard nav-dashboard"><span>Dashboard</span></a></li><li><a href=/recruitment/recruitment/jobsactiveemployee class="recruitment nav-recruitment"><span>Recruitment</span></a></li><li><a href=/employee/list/is/1 class="employees nav-employee"><span>Employees</span></a></li><li><a href=/attendance class="calender nav-attendance"><span>Attendance</span></a></li><li><a href=/pms/pms/index class="pms nav-pms"><span>Performance</span></a></li><li><a href=/payroll class="payroll nav-payroll"><span>Compensation</span></a></li>              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </nav>
+          <!-- /.navbar -->
+        </div>
+        <div class="col-sm-2 hidden-xs text-right">
+
+          <div class="right-menu">
+            <ul>
+              <li class="width70">
+                <form action="" class="search-form">
+                 <div class="form-group has-feedback" id="search-form-right">
+                  <label for="search" class="sr-only">Search</label>
+                  <!-- <input type="text" class="form-control" name="search"  id="tags"  placeholder="search"> -->
+                  <input id="globalsearch" class="search-query form-control" type="text" placeholder="Colleagues, Groups and Tags"/>
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+              </form>
+            </li>
+            <li class="width30">
+              <a href="#" id="toggle-sidebar" style="float:right;"><span class= "directory-avatar">CN</span></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+          <!-- <li class="dropdown  guided_tour_nav"><a onclick="javascript:introJs().start();" href="javascript:void(0);"><img src="" width="60%" height="60%" align="absmiddle" border="0"></a></li> -->
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <!-- Side Toggle Start here-->
+    <div id="main-sidebar" class="main-sidebar-right" style="display:none;">
+      <div class="profile_image text-center">
+        <div class="user-image">
+          <a href="#"><span class= "directory-avatar">CN</span></a>
+        </div> 
+        <div class="user-desc side-menu-head">
+          <span class="site-color3 fnt-size15 font-bold">Chaitanya</span>
+        </div>
+      </div>
+      <ul>
+        <li class="close-sb">
+          <a href="/employee/view/id/97837">My Profile</a>
+        </li>
+
+                  <!-- 
+    <li class="close-sb">
+      <a href="">Calendar</a>
+    </li> -->
+          <li class="close-sb">
+        <a href="/settings/calendar">Calendar</a>
+      </li>
+                                            <li class="close-sb">
+          <a href="/employee/changepassword">Change Password</a>
+        </li>
+           
+        <li class="close-sb">
+          <a href="/employee/settings">Email Settings</a>
+        </li>
+                                <li class="close-sb">
+            <a href="/expenses">Reimbursement</a>
+          </li>
+                                                                                    <li class="close-sb"><a href=/vibe>Vibe</a></li><li class="close-sb"><a href=/hrfiles>HR Documents</a></li><li class="close-sb"><a href=/leaves>Leaves</a></li>                                                              <div class="sidebar-line">
+                          <div class="divider-line4"></div>
+                        </div>
+                        <li class="close-sb">
+                          <a href="/dashboard/mobileqrcode">Mobile QR Code</a>
+                        </li>
+                                                <div class="sidebar-line">
+                          <div class="divider-line4"></div>
+                        </div>
+                        <li class="close-sb">
+                                                    <a href="/user/logout">Logout</a>
+                               
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- Side Toggle Closing here-->
+                                        <!--side bar toggle-->
+                    <script>
+                      jQuery(document).ready(function () {
+                        jQuery("#main-sidebar").simplerSidebar({
+                          opener: "#toggle-sidebar",
+                          top: 0,
+                          animation: {
+                            easing: "easeOutQuint"
+                          },
+                          sidebar: {
+                            closingLinks: ".close-sb"
+                          }
+                        }).show();
+                      });
+                    </script>
+                    <!--side bar toggle-->
+                                        <!-- notification JS -->
+                                        <!-- notification JS -->
+                    <!-- APPROVALS JS -->
+                                      <!-- APPROVALS JS -->
+                  <!-- for header sticky-->
+                  <script type="text/javascript"> 
+                    $(window).load(function() { $(".fixednav").sticky({ topSpacing: 0 }); }); 
+                    $('body').click(function(e){
+                      if(e.target.id == "globalsearch"){
+                        if($('body').find("#globalsearch").parent().hasClass("search-form-open")){
+                          $('body').find("#globalsearch").parent().removeClass("search-form-open");
+                        }else{
+                          $('body').find("#globalsearch").parent().addClass("search-form-open");
+                        }
+                      } else{
+                        if($('body').find("#globalsearch").parent().hasClass("search-form-open")){
+                          $('body').find("#globalsearch").parent().removeClass("search-form-open");
+                        }
+                      }
+                    });
+                  </script>
+                  <!-- for header sticky-->
+                  <!-- INTRO JS GUIDED TOUR-->
+                  <script type="text/javascript">
+
+                    var page_full_url = window.location;
+                    var split_page_url = window.location.pathname.split('/');
+
+                    var page_name = split_page_url.pop();
+                    var page_name_one = split_page_url[1];
+                    var page_name_two = split_page_url[2];
+                    var page_name_three = split_page_url[3];
+                    var page_name_four = split_page_url[4];
+
+                    if (isInt(page_name))
+                    {
+                      var constant_page_name = page_name_one + "_" + page_name_two + "_" + page_name_three + "_" + page_name_four;
+                      var cookie_page_name = (page_name == '') ? 'dashboard' : constant_page_name;
+                    }
+                    else
+                    {
+                      var cookie_page_name = (page_name == '') ? 'dashboard' : page_name;
+                    }
+
+                    $(document).ready(function () {
+                      var check_guided_tour = getCookie('darwinbox_guid_tour_' + cookie_page_name);
+                      if (check_guided_tour != 1)
+                      {
+                        javascript:introJs().start();
+                      }
+                    });
+
+                    $(".introjs-skipbutton").live("click", function (e) {
+                      document.cookie = "darwinbox_guid_tour_" + cookie_page_name + "=1; expires=18 Dec 2017 12:00:00 UTC; path=" + page_full_url + ";";
+                    });
+
+                    function getCookie(cname) {
+                      var name = cname + "=";
+                      var ca = document.cookie.split(';');
+                      for (var i = 0; i < ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) == ' ')
+                          c = c.substring(1);
+                        if (c.indexOf(name) == 0)
+                          return c.substring(name.length, c.length);
+                      }
+                      return "";
+                    }
+                    function isInt(value)
+                    {
+                      return !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10));
+                    }
+                  </script>
+                  <!-- INTRO JS GUIDED TOUR-->
+</div>
+</div>    </div>
+    <div class="container-full container-minheight">
+        <div class="">
+            <!--Outer Shell-->
+             <!--==============Main CONTAINER Start===============-->
+<style>
+.imgSpan img{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+textarea.form-control {
+    height: auto;
+    display: -webkit-inline-box;
+}
+</style>
+<script type="text/javascript" src="/js/jquery.autocomplete.js"></script>
+<div class="dahbord-emp-main">
+    <div class="dahbord-emp-left">
+                        <div class="how-are-you">
+                    <div class="col-sm-6">
+                        <h2 class="title-to-change">How do you feel at work today</h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <form id="pulse_form" action="/dashboard/pulserecord" method="post">                     <input type = "hidden" id= "emoji_clicked" name= "emoji_clicked" value="" />
+                     <ul class="emoticons-main">
+                        <li class="emotion_clicked" id="1">
+                            <a href="#" class="dropdown-toggle animate" data-toggle="dropdown"><img src="/images/darwinbox/smiley-5.png" alt=".." /></a>
+                            <ul class="dropdown-menu drop-menu-use emoticslist1" role="menu">
+                                <li class="first-emo">
+                                    <input type="text" name= "pulse_reason[1]" placeholder="Why?" class="form-control"> </li>
+                                    <li class="">
+                                        <div class="checkbox">
+                                            <input type="checkbox" name= "is_anonymous" class="styled" id="Checkbox" >
+                                            <label>Anonymous</label>
+                                        </div>
+                                    </li>
+                                    <li class="text-right">
+                                        <input type="submit" class="submit_pulse_btn btn btn-sm btn-default" value="POST"> </li>
+                                    </ul>
+                                </li>
+                                <li class="emotion_clicked" id="2">
+                                    <a href="#" class="dropdown-toggle animate" data-toggle="dropdown"><img src="/images/darwinbox/smiley-4.png" alt=".." /></a>
+                                    <ul class="dropdown-menu drop-menu-use emoticslist2" role="menu">
+                                        <li class="first-emo">
+                                            <input type="text" name= "pulse_reason[2]" placeholder="Why?" class="form-control"> </li>
+                                            <li class="">
+                                                <div class="checkbox">
+                                                    <input type="checkbox" name= "is_anonymous" class="styled" id="Checkbox" >
+                                                    <label>Anonymous</label>
+                                                </div>
+
+                                            </li>
+                                            <li class="text-right">
+                                                <input type="submit" class="submit_pulse_btn btn btn-sm btn-default" value="POST"> </li>
+                                            </ul>
+                                        </li>
+                                        <li class="emotion_clicked" id="3">
+                                            <a href="#" class="dropdown-toggle animate" data-toggle="dropdown"><img src="/images/darwinbox/smiley-3.png" alt=".." /></a>
+                                            <ul class="dropdown-menu drop-menu-use emoticslist3" role="menu">
+                                                <li class="first-emo">
+                                                    <input type="text" name= "pulse_reason[3]" placeholder="Why?" class="form-control"> </li>
+                                                    <li class="">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name= "is_anonymous" class="styled" id="Checkbox" >
+                                                            <label>Anonymous</label>
+                                                        </div>
+
+                                                    </li>
+                                                    <li class="text-right">
+                                                        <input type="submit" class="submit_pulse_btn btn btn-sm btn-default" value="POST"> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="emotion_clicked" id="4">
+                                                    <a href="#" class="dropdown-toggle animate" data-toggle="dropdown"><img src="/images/darwinbox/smiley-2.png" alt=".." /></a>
+                                                    <ul class="dropdown-menu drop-menu-use emoticslist4" role="menu">
+                                                        <li class="first-emo">
+                                                            <input type="text" name= "pulse_reason[4]" placeholder="Why?" class="form-control"> </li>
+                                                            <li class="">
+                                                                <div class="checkbox">
+                                                                    <input type="checkbox" name= "is_anonymous" class="styled" id="Checkbox" >
+                                                                    <label>Anonymous</label>
+                                                                </div>
+
+                                                            </li>
+                                                            <li class="text-right">
+                                                                <input type="submit" class="submit_pulse_btn btn btn-sm btn-default" value="POST"> </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="emotion_clicked" id="5">
+                                                            <a href="#" class="dropdown-toggle animate" data-toggle="dropdown"><img src="/images/darwinbox/smiley-1.png" alt=".." /></a>
+                                                            <ul class="dropdown-menu drop-menu-use emoticslist5" role="menu">
+                                                                <li class="first-emo">
+                                                                    <input type="text" name= "pulse_reason[5]" placeholder="Why?" class="form-control"> </li>
+                                                                    <li class="">
+                                                                        <div class="checkbox">
+                                                                            <input type="checkbox" name= "is_anonymous" class="styled" id="Checkbox" >
+                                                                            <label>Anonymous</label>
+                                                                        </div>
+
+                                                                    </li>
+                                                                    <li class="text-right">
+                                                                        <input type="submit" class="submit_pulse_btn btn btn-sm btn-default" value="POST"> </li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                            </form>                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                <!-- <div class="how-are-you-average hidden">
+                <div class="col-sm-6">
+                <h2>Company Average</h2>
+                </div>
+                <div class="col-sm-6">
+                <span id = "company_avg" class="dash-avg-span pull-right"></span>
+                </div>
+                <div class="clearfix"></div>
+            </div> -->
+                <div class="clearfix"></div>
+    <div class="with-nav-tabs">
+        <div class="panel-heading">
+            <ul class="nav nav-tabs-emp pending-tabs-dash" style="display:inline-block;">
+                <li class="dropdown active">
+                    <a href="#" data-toggle="dropdown" id="dash-drop-menu" class="dropdown-toggle">PENDING REQUEST <b class="caret"></b>
+                        <span>0</span>                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class=""><a href="/dashboard/index/id/1">PENDING REQUESTS</a></li>
+                        <li class=""><a href="/dashboard/index/id/2">PROCESSED REQUESTS</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/dashboard/index/id/3">ARCHIVED REQUESTS</a></li>
+                    </ul>
+                </li>
+                <li><a href="#tab2default" data-toggle="tab">PENDING TASKS<span>1</span></a></li>
+            </ul>
+            <script type="text/javascript">
+var myurl = "/settings/clockinandabsentreminder ";
+</script>
+<a id="attendance-logger-widget" class="attendance-logger-widget attendance-logger btn btn-large btn btn-sm btn-erp dash-clock pull-right clock-out-dash" href="#"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;&nbsp;CLOCK OUT</a>        </div>
+        <div class="clearfix"></div>
+        <div class="panel-body-emotic">
+            <div class="tab-content">
+                <div class="tab-pane in active" id="tab1default">
+                    <div class="top-aqe-link">
+                        <div class="col-md-3">
+                            <!--sree code starts -->
+                            <ul class="nav _sree_auto_list" role="navigation" style="margin-top:-6px">
+                                <li class="dropdown _sree_dropdown">
+                                    <a href="#" id="drop2" role="button" class="dropdown-toggle _sree_dropdown_toggle" data-toggle="dropdown">
+                                        All Requests <b class="caret" style="margin-left:40px;"></b>
+                                    </a>
+                                    <ul class="dropdown-menu _sree_dropdown_menu" role="menu" aria-labelledby="drop2">
+                                        <li role="presentation">
+                                            <a role="All" tabindex="-1" href="javascript:void(0);">
+                                                All Requests
+                                            </a>
+                                        </li>
+                                        <!--li role="presentation" class="divider"></li-->
+                                        <li role="presentation">
+                                            <a role="reportees" tabindex="-1" href="javascript:void(0);">
+                                                All Reportees
+                                            </a>
+                                        </li>
+                                        <!--li role="presentation" class="divider"></li-->
+                                        <li role="presentation">
+                                            <a role="my" tabindex="-1" href="javascript:void(0);">
+                                                My Requests
+                                            </a>
+
+                                        </li>
+                                        <input type="hidden" name="whose-select" id="whose-select" placeholder=""/>
+                                        <!--li role="presentation" class="divider"></li-->
+                                                                                    </ul>
+                                        </li>
+                                    </ul>
+                                    <!--sree code ends -->
+                                </div>
+
+                                <input type="hidden" id="hidden_type" value="1">
+                                <div class="col-md-4">
+                                    <!--  <a href="#">WHICH TYPE OF REQUEST<span class="caret"></span> </a> -->
+                                    <div class="dropdown  select-dropdown" style="width:200px;">
+                                        <span class="selectDefault selectType"></span>
+                                    <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="padding:0px; width:48%;vertical-align:middle;">WHICH TYPE OF REQUEST </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">hello</a></li>
+                                    <li><a href="#">hi</a></li>
+                                </ul> -->
+                                <select class="form-control cursor_pointer selectBox boxType" id="which">
+                                    <!-- <option value='' class="defualt-text">TYPE OF REQUEST</option> -->
+                                    <option class="defualt-text" value='all'>All Request Types</option>
+                                                                        <option value="attendance">Attendance Requests</option>
+                                                                                                            <option value="leave">Leave Requests</option>
+                                                                                                            <option value="streams">Vibe Requests</option>
+                                                                                                            <option value="expense">Reimbursement Requests</option>
+                                                                                                            <option value="letters">HR Letter Requests</option>
+                                                                    </select>
+                            </div> 
+                        </div>
+                                                <div class="col-md-2 hidden">
+                            <!-- <a href="#">ACTION<span class="caret"></span> </a> -->
+                            <div class="dropdown select-dropdown" style="width:100px;">
+                                <span class="selectDefault selectAction"></span>
+                                <select class="form-control cursor_pointer selectBox boxAction" id="action">
+                                    <option value="all" class="defualt-text" >All</option>
+                                    <option value="approve">Approved</option>
+                                    <option value="reject">Rejected</option>
+                                    <option class= "check_revoke" value="revoke">Revoked</option>';
+                                </select> 
+                            </div> 
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="requests request-container">
+                         
+                                    <div id="main_data" >
+                                        <div class="no-tasks text-center">
+                                            <img src="/images/darwinbox/smiley.png" alt=".." />
+                                            <!-- <h3>Under Maintenance</h3> -->
+                                            <h3>Good Job</h3>
+                                            <h4>No More Pending Requests Today</h4>
+                                        </div>
+                                    </div>
+                                
+                                <input type = "hidden" id = "updated_count" name = "updated_count" value = "10"/>
+                                <input type = "hidden" id = "page_type" name = "page_type" value = "1"/>
+                                <input type = "hidden" id = "scroll" name = "scroll" value = "scroll"/>
+
+                                                            </div>
+                        </div>
+                                                    <div class="tab-pane" id="tab2default">
+                                                                    <ul class="tabpane-ul-list overflowscroller-tab2">
+                                                                                <!-- advance -->
+                                                                                                                                                                    <li>
+                                                <div class="btn-hoverlayer">
+                                                    <a id="5a78daf29766c" class="btn btn-default" href="/employee/personaldetails/id/97837" target="_blank">ACT</a>                                                </div>
+                                                <div class="comments-left-img">
+                                                    <a href="#"><img src="/images/darwinbox/employee.png" class="img-circle" alt="..." /></a>
+                                                </div>
+                                                <div class="comments-left-discription">
+                                                    <p>Your profile is incomplete. Please fill your address details</p>
+                                                    <p><small>February 6, 2018 at 4:00:10 AM</small></p>
+                                                </div>
+                                            </li>
+
+                                                                                    </ul>
+                                                                        </div>
+                                                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div> 
+                                        <div class="available-people collapse navbar-collapse">
+                        <p class="site-color">EMPLOYEES ON LEAVE FOR NEXT 7 DAYS</p>
+                        <div class="more-button padding-right-10 padding-bottom-10" align="right">
+                            <a id="people_leave_showmore" class="showmore site-color btn btn-hover-border padding-left-right-12" style="position: relative;" href="#"><span class="iconify i_show-more"></span>VIEW</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                                    </div>
+                                <div class="dahbord-emp-right">
+                    <h4 class="latest-stream">LATEST VIBE</h4>
+                    <ul class="tabpane-ul-list1 overflowscroller-vibe-dash" style="min-height: 630px;" >
+                        <div class="message_feed">
+
+                            <div class="update-stream" id="messages-data-container">
+        <li id="message_thread_5a78b1e6b39a8" class="root-message-thread years_spent" style="display: block;">
+
+    <div class="message-container row-margin stream_row">
+        <div id="thread_reply_error_5a78b1e6b39a8" class="reply_error"></div>
+        <!-- <div class="row-fluid"> -->
+        <div class="comments-left-img1 vibe-right-img"><span class= "directory-avatar">D</span></div>
+        <div class="comments-left-discription1" >
+
+            <div class="message-owner">
+                <!-- // main streams // -->
+
+<!--//main streams// -->
+
+<!--// dashboard //  -->
+
+
+        <div class="col-md-9 col-sm-9" style="padding:0px;">
+            <div class="margin-top3">
+              <span class="site-color"><b>Darwinbox</b></span> <br/>
+              <!-- <small class=" adminname">HR Admin | 40 min</small> -->
+              <small class="adminname"><a rel="tooltip" data-placement="right" title="Last Updated on,February 6, 2018 at 4:36:46 PM&lt;br/&gt;Created on,February 6, 2018 at 1:05:02 AM" class="site-color6" href="#">17 hours ago</a></small>
+                            <small class="adminname">, To Everyone</small>
+                </div>
+  </div> 
+
+              </div>
+            <div class="clearfix"></div>
+        </div>
+            <div class="message-text">
+        <div class="clearfix"></div>
+        <h5 class="div-line-dash color-mention-class">
+            Congratulations to <a class="mention" href="/employee/view/id/28107">Ramesh Naik Banothu</a> for the completion of 1 year with us.        </h5>
+    </div>
+    <div class="clearfix"></div>
+
+
+<!-- Message Tags -->
+
+<!-- Message Tags -->
+<!-- Message Replies -->
+
+<!-- Message Replies -->
+<!-- Message Input -->
+
+<!-- Message Input -->
+
+            <!-- <div class="col-sm-2" style="text-align:right">
+                              <span class="label label-success label-group"></span>
+                      </div> -->
+         <!-- </div> -->
+
+         <div class="clearfix"></div>
+
+         <div class="col-md-12 message-actions paddingleft0 border-bottom-dash">
+                        <!-- Message Actions -->
+            <div class="timestamp comments" id="message_action_5a78b1e6b39a8">
+    <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
+        
+<small class="likes-pop" id="likeby_5a78b1e6b39a8">
+    <div id="5a78b1e6b39a8_likes_all" class="hide"><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/49039">Vinodh Bharathwaj Ramachandran</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/28107">Ramesh Naik Banothu</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/91588">Arun Kumar CP</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/19284">Prabhu Teja Belde</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/47914">Sai Siddhartha Lekharaju</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/68703">Kumar Anudeep Neelisetty</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/28106">Sahith Vibudhi</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/97837">Chaitanya NVK</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/53583">Prithvi Alluri</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/55613">Kishore Sudhamalla</a><br/> </div></div><a id="unlike_5a78b1e6b39a8" class="messageUnlike site-color6 unlike-middle" href="#">Unlike</a> | <a data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="&lt;a href=&quot;/employee/view/id/49039&quot;&gt;Vinodh Bharathwaj Ramachandran&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/28107&quot;&gt;Ramesh Naik Banothu&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/91588&quot;&gt;Arun Kumar CP&lt;/a&gt;&lt;br/&gt; &lt;a data-id=&quot;5a78b1e6b39a8&quot; class=&quot;site-color _show_more_likes&quot; style=&quot;clear:both;float:right;&quot; href=&quot;javascript:void(0);&quot;&gt;&lt;span class=&quot;iconify i_show-more&quot;&gt;&lt;/span&gt;Show More&lt;/a&gt;" class="_pop_over site-color6 no-of-likes" href="javascript:void(0);">10 Likes </a></small>
+    </div>            <!-- Message Actions -->
+        </div>
+
+    </li>
+    <div id = "edit_streams_modal_output"></div>
+        <script>
+    $(document).ready(function(){
+                //Examples of how to assign the Colorbox event to elements
+                /* $(".group1").colorbox({rel:'group1'});*/
+            });
+
+
+                function previewImage(el) {
+                var element = $(el).parent();
+                var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+                var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+                url = url + info_id;
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        previewurl = data;
+                        $("#file"+fileid).attr('href',previewurl) ;
+                        Shadowbox.setup("#file"+fileid);
+                        $("#file"+fileid).get(0).click();
+                    }
+                });
+                // return true;
+                }
+
+    </script>
+    <li id="message_thread_5a6e24fe79961" class="root-message-thread birthday" style="display: block;">
+
+    <div class="message-container row-margin stream_row">
+        <div id="thread_reply_error_5a6e24fe79961" class="reply_error"></div>
+        <!-- <div class="row-fluid"> -->
+        <div class="comments-left-img1 vibe-right-img"><span class= "directory-avatar">D</span></div>
+        <div class="comments-left-discription1" >
+
+            <div class="message-owner">
+                <!-- // main streams // -->
+
+<!--//main streams// -->
+
+<!--// dashboard //  -->
+
+
+        <div class="col-md-9 col-sm-9" style="padding:0px;">
+            <div class="margin-top3">
+              <span class="site-color"><b>Darwinbox</b></span> <br/>
+              <!-- <small class=" adminname">HR Admin | 40 min</small> -->
+              <small class="adminname"><a rel="tooltip" data-placement="right" title="Last Updated on,February 6, 2018 at 4:01:28 PM&lt;br/&gt;Created on,January 29, 2018 at 1:01:10 AM" class="site-color6" href="#">1 week ago</a></small>
+                            <small class="adminname">, To Everyone</small>
+                </div>
+  </div> 
+
+              </div>
+            <div class="clearfix"></div>
+        </div>
+            <div class="message-text">
+        <div class="clearfix"></div>
+        <h5 class="div-line-dash color-mention-class">
+            Wishing <a class="mention" href="/employee/view/id/65698">Chaitanya Gvs</a> a very Happy Birthday.        </h5>
+    </div>
+    <div class="clearfix"></div>
+
+
+<!-- Message Tags -->
+
+<!-- Message Tags -->
+<!-- Message Replies -->
+
+<!-- Message Replies -->
+<!-- Message Input -->
+
+<!-- Message Input -->
+
+            <!-- <div class="col-sm-2" style="text-align:right">
+                              <span class="label label-success label-group"></span>
+                      </div> -->
+         <!-- </div> -->
+
+         <div class="clearfix"></div>
+
+         <div class="col-md-12 message-actions paddingleft0 border-bottom-dash">
+                        <!-- Message Actions -->
+            <div class="timestamp comments" id="message_action_5a6e24fe79961">
+    <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
+        
+<small class="likes-pop" id="likeby_5a6e24fe79961">
+    <div id="5a6e24fe79961_likes_all" class="hide"><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/94621">Srikanth Chekuri</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/85669">Heena Sharma</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/91588">Arun Kumar CP</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/19062">Rajasekhara Reddy S</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/68703">Kumar Anudeep Neelisetty</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/65688">Ram Netha</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/97837">Chaitanya NVK</a><br/> </div></div><a id="unlike_5a6e24fe79961" class="messageUnlike site-color6 unlike-middle" href="#">Unlike</a> | <a data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="&lt;a href=&quot;/employee/view/id/94621&quot;&gt;Srikanth Chekuri&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/85669&quot;&gt;Heena Sharma&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/91588&quot;&gt;Arun Kumar CP&lt;/a&gt;&lt;br/&gt; &lt;a data-id=&quot;5a6e24fe79961&quot; class=&quot;site-color _show_more_likes&quot; style=&quot;clear:both;float:right;&quot; href=&quot;javascript:void(0);&quot;&gt;&lt;span class=&quot;iconify i_show-more&quot;&gt;&lt;/span&gt;Show More&lt;/a&gt;" class="_pop_over site-color6 no-of-likes" href="javascript:void(0);">7 Likes </a></small>
+    </div>            <!-- Message Actions -->
+        </div>
+
+    </li>
+    <div id = "edit_streams_modal_output"></div>
+        <script>
+    $(document).ready(function(){
+                //Examples of how to assign the Colorbox event to elements
+                /* $(".group1").colorbox({rel:'group1'});*/
+            });
+
+
+                function previewImage(el) {
+                var element = $(el).parent();
+                var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+                var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+                url = url + info_id;
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        previewurl = data;
+                        $("#file"+fileid).attr('href',previewurl) ;
+                        Shadowbox.setup("#file"+fileid);
+                        $("#file"+fileid).get(0).click();
+                    }
+                });
+                // return true;
+                }
+
+    </script>
+    <li id="message_thread_5a6eb13cdaf74" class="root-message-thread user" style="display: block;">
+
+    <div class="message-container row-margin stream_row">
+        <div id="thread_reply_error_5a6eb13cdaf74" class="reply_error"></div>
+        <!-- <div class="row-fluid"> -->
+        <div class="comments-left-img1 vibe-right-img"><span class= "directory-avatar">D</span></div>
+        <div class="comments-left-discription1" >
+
+            <div class="message-owner">
+                <!-- // main streams // -->
+
+<!--//main streams// -->
+
+<!--// dashboard //  -->
+
+
+        <div class="col-md-9 col-sm-9" style="padding:0px;">
+            <div class="margin-top3">
+              <span class="site-color"><b>Darwinbox</b></span> <br/>
+              <!-- <small class=" adminname">HR Admin | 40 min</small> -->
+              <small class="adminname"><a rel="tooltip" data-placement="right" title="Last Updated on,February 5, 2018 at 8:56:32 PM&lt;br/&gt;Created on,January 29, 2018 at 10:59:33 AM" class="site-color6" href="#">1 week ago</a></small>
+                            <small class="adminname">, To Everyone</small>
+                </div>
+  </div> 
+
+              </div>
+            <div class="clearfix"></div>
+        </div>
+            <div class="message-text">
+        <div class="clearfix"></div>
+        <h5 class="div-line-dash color-mention-class">
+            Welcome <a class="mention" href="/employee/view/id/103152">Binit Kumar</a> to dbox. <br /> Binit has joined Account Management department as Product Specialist.        </h5>
+    </div>
+    <div class="clearfix"></div>
+
+
+<!-- Message Tags -->
+
+<!-- Message Tags -->
+<!-- Message Replies -->
+
+<!-- Message Replies -->
+<!-- Message Input -->
+
+<!-- Message Input -->
+
+            <!-- <div class="col-sm-2" style="text-align:right">
+                              <span class="label label-success label-group"></span>
+                      </div> -->
+         <!-- </div> -->
+
+         <div class="clearfix"></div>
+
+         <div class="col-md-12 message-actions paddingleft0 border-bottom-dash">
+                        <!-- Message Actions -->
+            <div class="timestamp comments" id="message_action_5a6eb13cdaf74">
+    <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
+        
+<small class="likes-pop" id="likeby_5a6eb13cdaf74">
+    <div id="5a6eb13cdaf74_likes_all" class="hide"><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/75249">Ashok Patsamatla</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/91588">Arun Kumar CP</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/65688">Ram Netha</a><br/> </div></div>    <a id = 'like_5a6eb13cdaf74' class = "messageLike" href = "#"><img src="/images/darwinbox/like.png" alt="view"></a>
+    <a id="like_5a6eb13cdaf74" class="messageLike site-color6" href="#">Like</a> | <a data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="&lt;a href=&quot;/employee/view/id/75249&quot;&gt;Ashok Patsamatla&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/91588&quot;&gt;Arun Kumar CP&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/65688&quot;&gt;Ram Netha&lt;/a&gt;&lt;br/&gt; " class="_pop_over site-color6 no-of-likes" href="javascript:void(0);">3 Likes </a></small>
+    </div>            <!-- Message Actions -->
+        </div>
+
+    </li>
+    <div id = "edit_streams_modal_output"></div>
+        <script>
+    $(document).ready(function(){
+                //Examples of how to assign the Colorbox event to elements
+                /* $(".group1").colorbox({rel:'group1'});*/
+            });
+
+
+                function previewImage(el) {
+                var element = $(el).parent();
+                var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+                var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+                url = url + info_id;
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        previewurl = data;
+                        $("#file"+fileid).attr('href',previewurl) ;
+                        Shadowbox.setup("#file"+fileid);
+                        $("#file"+fileid).get(0).click();
+                    }
+                });
+                // return true;
+                }
+
+    </script>
+    <li id="message_thread_5a744ba0dbf6d" class="root-message-thread user" style="display: block;">
+
+    <div class="message-container row-margin stream_row">
+        <div id="thread_reply_error_5a744ba0dbf6d" class="reply_error"></div>
+        <!-- <div class="row-fluid"> -->
+        <div class="comments-left-img1 vibe-right-img"><span class= "directory-avatar">D</span></div>
+        <div class="comments-left-discription1" >
+
+            <div class="message-owner">
+                <!-- // main streams // -->
+
+<!--//main streams// -->
+
+<!--// dashboard //  -->
+
+
+        <div class="col-md-9 col-sm-9" style="padding:0px;">
+            <div class="margin-top3">
+              <span class="site-color"><b>Darwinbox</b></span> <br/>
+              <!-- <small class=" adminname">HR Admin | 40 min</small> -->
+              <small class="adminname"><a rel="tooltip" data-placement="right" title="Last Updated on,February 5, 2018 at 8:56:28 PM&lt;br/&gt;Created on,February 2, 2018 at 4:59:37 PM" class="site-color6" href="#">4 days ago</a></small>
+                            <small class="adminname">, To Everyone</small>
+                </div>
+  </div> 
+
+              </div>
+            <div class="clearfix"></div>
+        </div>
+            <div class="message-text">
+        <div class="clearfix"></div>
+        <h5 class="div-line-dash color-mention-class">
+            Welcome <a class="mention" href="/employee/view/id/103359">Arka Prasad Das</a> to dbox. <br /> Arka has joined Account Management department as Product Specialist.        </h5>
+    </div>
+    <div class="clearfix"></div>
+
+
+<!-- Message Tags -->
+
+<!-- Message Tags -->
+<!-- Message Replies -->
+
+<!-- Message Replies -->
+<!-- Message Input -->
+
+<!-- Message Input -->
+
+            <!-- <div class="col-sm-2" style="text-align:right">
+                              <span class="label label-success label-group"></span>
+                      </div> -->
+         <!-- </div> -->
+
+         <div class="clearfix"></div>
+
+         <div class="col-md-12 message-actions paddingleft0 border-bottom-dash">
+                        <!-- Message Actions -->
+            <div class="timestamp comments" id="message_action_5a744ba0dbf6d">
+    <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
+        
+<small class="likes-pop" id="likeby_5a744ba0dbf6d">
+    <div id="5a744ba0dbf6d_likes_all" class="hide"><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/75249">Ashok Patsamatla</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/65688">Ram Netha</a><br/> </div></div>    <a id = 'like_5a744ba0dbf6d' class = "messageLike" href = "#"><img src="/images/darwinbox/like.png" alt="view"></a>
+    <a id="like_5a744ba0dbf6d" class="messageLike site-color6" href="#">Like</a> | <a data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="&lt;a href=&quot;/employee/view/id/75249&quot;&gt;Ashok Patsamatla&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/65688&quot;&gt;Ram Netha&lt;/a&gt;&lt;br/&gt; " class="_pop_over site-color6 no-of-likes" href="javascript:void(0);">2 Likes </a></small>
+    </div>            <!-- Message Actions -->
+        </div>
+
+    </li>
+    <div id = "edit_streams_modal_output"></div>
+        <script>
+    $(document).ready(function(){
+                //Examples of how to assign the Colorbox event to elements
+                /* $(".group1").colorbox({rel:'group1'});*/
+            });
+
+
+                function previewImage(el) {
+                var element = $(el).parent();
+                var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+                var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+                url = url + info_id;
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        previewurl = data;
+                        $("#file"+fileid).attr('href',previewurl) ;
+                        Shadowbox.setup("#file"+fileid);
+                        $("#file"+fileid).get(0).click();
+                    }
+                });
+                // return true;
+                }
+
+    </script>
+    <li id="message_thread_5a6f767eeca55" class="root-message-thread birthday" style="display: block;">
+
+    <div class="message-container row-margin stream_row">
+        <div id="thread_reply_error_5a6f767eeca55" class="reply_error"></div>
+        <!-- <div class="row-fluid"> -->
+        <div class="comments-left-img1 vibe-right-img"><span class= "directory-avatar">D</span></div>
+        <div class="comments-left-discription1" >
+
+            <div class="message-owner">
+                <!-- // main streams // -->
+
+<!--//main streams// -->
+
+<!--// dashboard //  -->
+
+
+        <div class="col-md-9 col-sm-9" style="padding:0px;">
+            <div class="margin-top3">
+              <span class="site-color"><b>Darwinbox</b></span> <br/>
+              <!-- <small class=" adminname">HR Admin | 40 min</small> -->
+              <small class="adminname"><a rel="tooltip" data-placement="right" title="Last Updated on,February 5, 2018 at 8:56:26 PM&lt;br/&gt;Created on,January 30, 2018 at 1:01:11 AM" class="site-color6" href="#">1 week ago</a></small>
+                            <small class="adminname">, To Everyone</small>
+                </div>
+  </div> 
+
+              </div>
+            <div class="clearfix"></div>
+        </div>
+            <div class="message-text">
+        <div class="clearfix"></div>
+        <h5 class="div-line-dash color-mention-class">
+            Wishing <a class="mention" href="/employee/view/id/42985">Megha Yadav</a> a very Happy Birthday.        </h5>
+    </div>
+    <div class="clearfix"></div>
+
+
+<!-- Message Tags -->
+
+<!-- Message Tags -->
+<!-- Message Replies -->
+
+<!-- Message Replies -->
+<!-- Message Input -->
+
+<!-- Message Input -->
+
+            <!-- <div class="col-sm-2" style="text-align:right">
+                              <span class="label label-success label-group"></span>
+                      </div> -->
+         <!-- </div> -->
+
+         <div class="clearfix"></div>
+
+         <div class="col-md-12 message-actions paddingleft0 border-bottom-dash">
+                        <!-- Message Actions -->
+            <div class="timestamp comments" id="message_action_5a6f767eeca55">
+    <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
+        
+<small class="likes-pop" id="likeby_5a6f767eeca55">
+    <div id="5a6f767eeca55_likes_all" class="hide"><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/94621">Srikanth Chekuri</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/85669">Heena Sharma</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/91588">Arun Kumar CP</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/77300">Balaji Vykuntham</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/19062">Rajasekhara Reddy S</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/68703">Kumar Anudeep Neelisetty</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/54165">Akanksha Tanwar</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/65688">Ram Netha</a><br/> </div></div>    <a id = 'like_5a6f767eeca55' class = "messageLike" href = "#"><img src="/images/darwinbox/like.png" alt="view"></a>
+    <a id="like_5a6f767eeca55" class="messageLike site-color6" href="#">Like</a> | <a data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="&lt;a href=&quot;/employee/view/id/94621&quot;&gt;Srikanth Chekuri&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/85669&quot;&gt;Heena Sharma&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/91588&quot;&gt;Arun Kumar CP&lt;/a&gt;&lt;br/&gt; &lt;a data-id=&quot;5a6f767eeca55&quot; class=&quot;site-color _show_more_likes&quot; style=&quot;clear:both;float:right;&quot; href=&quot;javascript:void(0);&quot;&gt;&lt;span class=&quot;iconify i_show-more&quot;&gt;&lt;/span&gt;Show More&lt;/a&gt;" class="_pop_over site-color6 no-of-likes" href="javascript:void(0);">8 Likes </a></small>
+    <small class="pull-right likes-pop site-color2">1 Comments</small>
+        </div>            <!-- Message Actions -->
+        </div>
+
+    </li>
+    <div id = "edit_streams_modal_output"></div>
+        <script>
+    $(document).ready(function(){
+                //Examples of how to assign the Colorbox event to elements
+                /* $(".group1").colorbox({rel:'group1'});*/
+            });
+
+
+                function previewImage(el) {
+                var element = $(el).parent();
+                var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+                var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+                url = url + info_id;
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        previewurl = data;
+                        $("#file"+fileid).attr('href',previewurl) ;
+                        Shadowbox.setup("#file"+fileid);
+                        $("#file"+fileid).get(0).click();
+                    }
+                });
+                // return true;
+                }
+
+    </script>
+    <li id="message_thread_5a775f7739acc" class="root-message-thread birthday" style="display: block;">
+
+    <div class="message-container row-margin stream_row">
+        <div id="thread_reply_error_5a775f7739acc" class="reply_error"></div>
+        <!-- <div class="row-fluid"> -->
+        <div class="comments-left-img1 vibe-right-img"><span class= "directory-avatar">D</span></div>
+        <div class="comments-left-discription1" >
+
+            <div class="message-owner">
+                <!-- // main streams // -->
+
+<!--//main streams// -->
+
+<!--// dashboard //  -->
+
+
+        <div class="col-md-9 col-sm-9" style="padding:0px;">
+            <div class="margin-top3">
+              <span class="site-color"><b>Darwinbox</b></span> <br/>
+              <!-- <small class=" adminname">HR Admin | 40 min</small> -->
+              <small class="adminname"><a rel="tooltip" data-placement="right" title="Last Updated on,February 5, 2018 at 8:56:15 PM&lt;br/&gt;Created on,February 5, 2018 at 1:01:03 AM" class="site-color6" href="#">1 day ago</a></small>
+                            <small class="adminname">, To Everyone</small>
+                </div>
+  </div> 
+
+              </div>
+            <div class="clearfix"></div>
+        </div>
+            <div class="message-text">
+        <div class="clearfix"></div>
+        <h5 class="div-line-dash color-mention-class">
+            Wishing <a class="mention" href="/employee/view/id/25642">Chinmayanand Kottali</a> a very Happy Birthday.        </h5>
+    </div>
+    <div class="clearfix"></div>
+
+
+<!-- Message Tags -->
+
+<!-- Message Tags -->
+<!-- Message Replies -->
+
+<!-- Message Replies -->
+<!-- Message Input -->
+
+<!-- Message Input -->
+
+            <!-- <div class="col-sm-2" style="text-align:right">
+                              <span class="label label-success label-group"></span>
+                      </div> -->
+         <!-- </div> -->
+
+         <div class="clearfix"></div>
+
+         <div class="col-md-12 message-actions paddingleft0 border-bottom-dash">
+                        <!-- Message Actions -->
+            <div class="timestamp comments" id="message_action_5a775f7739acc">
+    <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
+        
+<small class="likes-pop" id="likeby_5a775f7739acc">
+    <div id="5a775f7739acc_likes_all" class="hide"><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/61879">Arjun Bhanot</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/91588">Arun Kumar CP</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/19284">Prabhu Teja Belde</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/65688">Ram Netha</a><br/> </div></div>    <a id = 'like_5a775f7739acc' class = "messageLike" href = "#"><img src="/images/darwinbox/like.png" alt="view"></a>
+    <a id="like_5a775f7739acc" class="messageLike site-color6" href="#">Like</a> | <a data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="&lt;a href=&quot;/employee/view/id/61879&quot;&gt;Arjun Bhanot&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/91588&quot;&gt;Arun Kumar CP&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/19284&quot;&gt;Prabhu Teja Belde&lt;/a&gt;&lt;br/&gt; &lt;a data-id=&quot;5a775f7739acc&quot; class=&quot;site-color _show_more_likes&quot; style=&quot;clear:both;float:right;&quot; href=&quot;javascript:void(0);&quot;&gt;&lt;span class=&quot;iconify i_show-more&quot;&gt;&lt;/span&gt;Show More&lt;/a&gt;" class="_pop_over site-color6 no-of-likes" href="javascript:void(0);">4 Likes </a></small>
+    </div>            <!-- Message Actions -->
+        </div>
+
+    </li>
+    <div id = "edit_streams_modal_output"></div>
+        <script>
+    $(document).ready(function(){
+                //Examples of how to assign the Colorbox event to elements
+                /* $(".group1").colorbox({rel:'group1'});*/
+            });
+
+
+                function previewImage(el) {
+                var element = $(el).parent();
+                var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+                var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+                url = url + info_id;
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        previewurl = data;
+                        $("#file"+fileid).attr('href',previewurl) ;
+                        Shadowbox.setup("#file"+fileid);
+                        $("#file"+fileid).get(0).click();
+                    }
+                });
+                // return true;
+                }
+
+    </script>
+    <li id="message_thread_5a56ffa1af35e" class="root-message-thread user" style="display: block;">
+
+    <div class="message-container row-margin stream_row">
+        <div id="thread_reply_error_5a56ffa1af35e" class="reply_error"></div>
+        <!-- <div class="row-fluid"> -->
+        <div class="comments-left-img1 vibe-right-img"><span class= "directory-avatar">D</span></div>
+        <div class="comments-left-discription1" >
+
+            <div class="message-owner">
+                <!-- // main streams // -->
+
+<!--//main streams// -->
+
+<!--// dashboard //  -->
+
+
+        <div class="col-md-9 col-sm-9" style="padding:0px;">
+            <div class="margin-top3">
+              <span class="site-color"><b>Darwinbox</b></span> <br/>
+              <!-- <small class=" adminname">HR Admin | 40 min</small> -->
+              <small class="adminname"><a rel="tooltip" data-placement="right" title="Last Updated on,January 23, 2018 at 1:37:12 PM&lt;br/&gt;Created on,January 11, 2018 at 11:39:37 AM" class="site-color6" href="#">3 weeks ago</a></small>
+                            <small class="adminname">, To Everyone</small>
+                </div>
+  </div> 
+
+              </div>
+            <div class="clearfix"></div>
+        </div>
+            <div class="message-text">
+        <div class="clearfix"></div>
+        <h5 class="div-line-dash color-mention-class">
+            Welcome <a class="mention" href="/employee/view/id/100865">Sudheer Abbaraju</a> to dbox. <br /> Sudheer has joined Account Management department as Product Specialist.        </h5>
+    </div>
+    <div class="clearfix"></div>
+
+
+<!-- Message Tags -->
+
+<!-- Message Tags -->
+<!-- Message Replies -->
+
+<!-- Message Replies -->
+<!-- Message Input -->
+
+<!-- Message Input -->
+
+            <!-- <div class="col-sm-2" style="text-align:right">
+                              <span class="label label-success label-group"></span>
+                      </div> -->
+         <!-- </div> -->
+
+         <div class="clearfix"></div>
+
+         <div class="col-md-12 message-actions paddingleft0 border-bottom-dash">
+                        <!-- Message Actions -->
+            <div class="timestamp comments" id="message_action_5a56ffa1af35e">
+    <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
+        
+<small class="likes-pop" id="likeby_5a56ffa1af35e">
+    <div id="5a56ffa1af35e_likes_all" class="hide"><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/75249">Ashok Patsamatla</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/28107">Ramesh Naik Banothu</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/49600">Abhilash Gopal</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/94621">Srikanth Chekuri</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/91588">Arun Kumar CP</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/96165">Rohit Kumar</a><br/> </div></div>    <a id = 'like_5a56ffa1af35e' class = "messageLike" href = "#"><img src="/images/darwinbox/like.png" alt="view"></a>
+    <a id="like_5a56ffa1af35e" class="messageLike site-color6" href="#">Like</a> | <a data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="&lt;a href=&quot;/employee/view/id/75249&quot;&gt;Ashok Patsamatla&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/28107&quot;&gt;Ramesh Naik Banothu&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/49600&quot;&gt;Abhilash Gopal&lt;/a&gt;&lt;br/&gt; &lt;a data-id=&quot;5a56ffa1af35e&quot; class=&quot;site-color _show_more_likes&quot; style=&quot;clear:both;float:right;&quot; href=&quot;javascript:void(0);&quot;&gt;&lt;span class=&quot;iconify i_show-more&quot;&gt;&lt;/span&gt;Show More&lt;/a&gt;" class="_pop_over site-color6 no-of-likes" href="javascript:void(0);">6 Likes </a></small>
+    </div>            <!-- Message Actions -->
+        </div>
+
+    </li>
+    <div id = "edit_streams_modal_output"></div>
+        <script>
+    $(document).ready(function(){
+                //Examples of how to assign the Colorbox event to elements
+                /* $(".group1").colorbox({rel:'group1'});*/
+            });
+
+
+                function previewImage(el) {
+                var element = $(el).parent();
+                var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+                var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+                url = url + info_id;
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        previewurl = data;
+                        $("#file"+fileid).attr('href',previewurl) ;
+                        Shadowbox.setup("#file"+fileid);
+                        $("#file"+fileid).get(0).click();
+                    }
+                });
+                // return true;
+                }
+
+    </script>
+    <li id="message_thread_5a657d71dede9" class="root-message-thread user" style="display: block;">
+
+    <div class="message-container row-margin stream_row">
+        <div id="thread_reply_error_5a657d71dede9" class="reply_error"></div>
+        <!-- <div class="row-fluid"> -->
+        <div class="comments-left-img1 vibe-right-img"><span class= "directory-avatar">D</span></div>
+        <div class="comments-left-discription1" >
+
+            <div class="message-owner">
+                <!-- // main streams // -->
+
+<!--//main streams// -->
+
+<!--// dashboard //  -->
+
+
+        <div class="col-md-9 col-sm-9" style="padding:0px;">
+            <div class="margin-top3">
+              <span class="site-color"><b>Darwinbox</b></span> <br/>
+              <!-- <small class=" adminname">HR Admin | 40 min</small> -->
+              <small class="adminname"><a rel="tooltip" data-placement="right" title="Last Updated on,January 23, 2018 at 2:48:21 AM&lt;br/&gt;Created on,January 22, 2018 at 11:28:10 AM" class="site-color6" href="#">2 weeks ago</a></small>
+                            <small class="adminname">, To Everyone</small>
+                </div>
+  </div> 
+
+              </div>
+            <div class="clearfix"></div>
+        </div>
+            <div class="message-text">
+        <div class="clearfix"></div>
+        <h5 class="div-line-dash color-mention-class">
+            Welcome <a class="mention" href="/employee/view/id/102498">Vinodh Kumar Basavani</a> to dbox. <br /> Vinodh Kumar has joined Engineering department as Devops Engineer.        </h5>
+    </div>
+    <div class="clearfix"></div>
+
+
+<!-- Message Tags -->
+
+<!-- Message Tags -->
+<!-- Message Replies -->
+
+<!-- Message Replies -->
+<!-- Message Input -->
+
+<!-- Message Input -->
+
+            <!-- <div class="col-sm-2" style="text-align:right">
+                              <span class="label label-success label-group"></span>
+                      </div> -->
+         <!-- </div> -->
+
+         <div class="clearfix"></div>
+
+         <div class="col-md-12 message-actions paddingleft0 border-bottom-dash">
+                        <!-- Message Actions -->
+            <div class="timestamp comments" id="message_action_5a657d71dede9">
+    <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
+        
+<small class="likes-pop" id="likeby_5a657d71dede9">
+    <div id="5a657d71dede9_likes_all" class="hide"><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/94621">Srikanth Chekuri</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/28107">Ramesh Naik Banothu</a><br/> </div></div>    <a id = 'like_5a657d71dede9' class = "messageLike" href = "#"><img src="/images/darwinbox/like.png" alt="view"></a>
+    <a id="like_5a657d71dede9" class="messageLike site-color6" href="#">Like</a> | <a data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="&lt;a href=&quot;/employee/view/id/94621&quot;&gt;Srikanth Chekuri&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/28107&quot;&gt;Ramesh Naik Banothu&lt;/a&gt;&lt;br/&gt; " class="_pop_over site-color6 no-of-likes" href="javascript:void(0);">2 Likes </a></small>
+    </div>            <!-- Message Actions -->
+        </div>
+
+    </li>
+    <div id = "edit_streams_modal_output"></div>
+        <script>
+    $(document).ready(function(){
+                //Examples of how to assign the Colorbox event to elements
+                /* $(".group1").colorbox({rel:'group1'});*/
+            });
+
+
+                function previewImage(el) {
+                var element = $(el).parent();
+                var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+                var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+                url = url + info_id;
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        previewurl = data;
+                        $("#file"+fileid).attr('href',previewurl) ;
+                        Shadowbox.setup("#file"+fileid);
+                        $("#file"+fileid).get(0).click();
+                    }
+                });
+                // return true;
+                }
+
+    </script>
+    <li id="message_thread_5a5e52ff2d650" class="root-message-thread birthday" style="display: block;">
+
+    <div class="message-container row-margin stream_row">
+        <div id="thread_reply_error_5a5e52ff2d650" class="reply_error"></div>
+        <!-- <div class="row-fluid"> -->
+        <div class="comments-left-img1 vibe-right-img"><span class= "directory-avatar">D</span></div>
+        <div class="comments-left-discription1" >
+
+            <div class="message-owner">
+                <!-- // main streams // -->
+
+<!--//main streams// -->
+
+<!--// dashboard //  -->
+
+
+        <div class="col-md-9 col-sm-9" style="padding:0px;">
+            <div class="margin-top3">
+              <span class="site-color"><b>Darwinbox</b></span> <br/>
+              <!-- <small class=" adminname">HR Admin | 40 min</small> -->
+              <small class="adminname"><a rel="tooltip" data-placement="right" title="Last Updated on,January 22, 2018 at 11:12:08 AM&lt;br/&gt;Created on,January 17, 2018 at 1:01:11 AM" class="site-color6" href="#">2 weeks ago</a></small>
+                            <small class="adminname">, To Everyone</small>
+                </div>
+  </div> 
+
+              </div>
+            <div class="clearfix"></div>
+        </div>
+            <div class="message-text">
+        <div class="clearfix"></div>
+        <h5 class="div-line-dash color-mention-class">
+            Wishing <a class="mention" href="/employee/view/id/47513">Mrityunjay Saksena</a> a very Happy Birthday.        </h5>
+    </div>
+    <div class="clearfix"></div>
+
+
+<!-- Message Tags -->
+
+<!-- Message Tags -->
+<!-- Message Replies -->
+
+<!-- Message Replies -->
+<!-- Message Input -->
+
+<!-- Message Input -->
+
+            <!-- <div class="col-sm-2" style="text-align:right">
+                              <span class="label label-success label-group"></span>
+                      </div> -->
+         <!-- </div> -->
+
+         <div class="clearfix"></div>
+
+         <div class="col-md-12 message-actions paddingleft0 border-bottom-dash">
+                        <!-- Message Actions -->
+            <div class="timestamp comments" id="message_action_5a5e52ff2d650">
+    <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
+        
+<small class="likes-pop" id="likeby_5a5e52ff2d650">
+    <div id="5a5e52ff2d650_likes_all" class="hide"><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/75249">Ashok Patsamatla</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/91588">Arun Kumar CP</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/49600">Abhilash Gopal</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/68703">Kumar Anudeep Neelisetty</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/61879">Arjun Bhanot</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/101806">Rhushikesh Lokhande</a><br/> </div></div>    <a id = 'like_5a5e52ff2d650' class = "messageLike" href = "#"><img src="/images/darwinbox/like.png" alt="view"></a>
+    <a id="like_5a5e52ff2d650" class="messageLike site-color6" href="#">Like</a> | <a data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="&lt;a href=&quot;/employee/view/id/75249&quot;&gt;Ashok Patsamatla&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/91588&quot;&gt;Arun Kumar CP&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/49600&quot;&gt;Abhilash Gopal&lt;/a&gt;&lt;br/&gt; &lt;a data-id=&quot;5a5e52ff2d650&quot; class=&quot;site-color _show_more_likes&quot; style=&quot;clear:both;float:right;&quot; href=&quot;javascript:void(0);&quot;&gt;&lt;span class=&quot;iconify i_show-more&quot;&gt;&lt;/span&gt;Show More&lt;/a&gt;" class="_pop_over site-color6 no-of-likes" href="javascript:void(0);">6 Likes </a></small>
+    </div>            <!-- Message Actions -->
+        </div>
+
+    </li>
+    <div id = "edit_streams_modal_output"></div>
+        <script>
+    $(document).ready(function(){
+                //Examples of how to assign the Colorbox event to elements
+                /* $(".group1").colorbox({rel:'group1'});*/
+            });
+
+
+                function previewImage(el) {
+                var element = $(el).parent();
+                var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+                var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+                url = url + info_id;
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        previewurl = data;
+                        $("#file"+fileid).attr('href',previewurl) ;
+                        Shadowbox.setup("#file"+fileid);
+                        $("#file"+fileid).get(0).click();
+                    }
+                });
+                // return true;
+                }
+
+    </script>
+    <li id="message_thread_5a58b50028f4c" class="root-message-thread " style="display: block;">
+
+    <div class="message-container row-margin stream_row">
+        <div id="thread_reply_error_5a58b50028f4c" class="reply_error"></div>
+        <!-- <div class="row-fluid"> -->
+        <div class="comments-left-img1 vibe-right-img"><span class= "directory-avatar">RB</span></div>
+        <div class="comments-left-discription1" >
+
+            <div class="message-owner">
+                <!-- // main streams // -->
+
+<!--//main streams// -->
+
+<!--// dashboard //  -->
+
+
+        <div class="col-md-9 col-sm-9" style="padding:0px;">
+            <div class="margin-top3">
+              <span class="site-color"><b><a class="site-color" href="https://dbox.darwinbox.in/employee/view/id/28107">Ramesh Naik Banothu</a></b></span> <br/>
+              <!-- <small class=" adminname">HR Admin | 40 min</small> -->
+              <small class="adminname"><a rel="tooltip" data-placement="right" title="Last Updated on,January 22, 2018 at 11:05:10 AM&lt;br/&gt;Created on,January 12, 2018 at 6:45:44 PM" class="site-color6" href="#">3 weeks ago</a></small>
+                            <small class="adminname">, To Everyone</small>
+                </div>
+  </div> 
+
+              </div>
+            <div class="clearfix"></div>
+        </div>
+            <div class="message-text">
+        <div class="clearfix"></div>
+        <h5 class="div-line-dash color-mention-class">
+            Good job <a class="mention" href="/employee/view/id/28106">Sahith Vibudhi</a>        </h5>
+    </div>
+    <div class="clearfix"></div>
+
+
+<!-- Message Tags -->
+
+<!-- Message Tags -->
+<!-- Message Replies -->
+
+<!-- Message Replies -->
+<!-- Message Input -->
+
+<!-- Message Input -->
+
+            <!-- <div class="col-sm-2" style="text-align:right">
+                              <span class="label label-success label-group"></span>
+                      </div> -->
+         <!-- </div> -->
+
+         <div class="clearfix"></div>
+
+         <div class="col-md-12 message-actions paddingleft0 border-bottom-dash">
+                        <!-- Message Actions -->
+            <div class="timestamp comments" id="message_action_5a58b50028f4c">
+    <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
+        
+<small class="likes-pop" id="likeby_5a58b50028f4c">
+    <div id="5a58b50028f4c_likes_all" class="hide"><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/47914">Sai Siddhartha Lekharaju</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/4007">Chaitanya Peddi</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/32827">Girish Kaushal</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/68489">Vivekananda Reddy Palugulla</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/91053">Ankit Tiwari</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/4006">Rohit Chennamaneni</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/49597">Satya Naga Vineeli Uppaluri</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/47911">Tilak Putta</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/4008">Bhavya Paruchuri</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/98666">Akhila Ganesh</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/98745">Sai Madhukar Somu</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/96165">Rohit Kumar</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/32825">Shilpi Jain</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/49600">Abhilash Gopal</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/68380">Narayan Shiva Moranganti</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/91588">Arun Kumar CP</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/25671">Karthik Teja</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/25642">Chinmayanand Kottali</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/97837">Chaitanya NVK</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/65698">Chaitanya GVS</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/75249">Ashok Patsamatla</a><br/> </div><div class="col-md-12" style="padding:0 30px;"><a href="/employee/view/id/28107">Ramesh Naik Banothu</a><br/> </div></div><a id="unlike_5a58b50028f4c" class="messageUnlike site-color6 unlike-middle" href="#">Unlike</a> | <a data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="&lt;a href=&quot;/employee/view/id/47914&quot;&gt;Sai Siddhartha Lekharaju&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/4007&quot;&gt;Chaitanya Peddi&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;/employee/view/id/32827&quot;&gt;Girish Kaushal&lt;/a&gt;&lt;br/&gt; &lt;a data-id=&quot;5a58b50028f4c&quot; class=&quot;site-color _show_more_likes&quot; style=&quot;clear:both;float:right;&quot; href=&quot;javascript:void(0);&quot;&gt;&lt;span class=&quot;iconify i_show-more&quot;&gt;&lt;/span&gt;Show More&lt;/a&gt;" class="_pop_over site-color6 no-of-likes" href="javascript:void(0);">22 Likes </a></small>
+    </div>            <!-- Message Actions -->
+        </div>
+
+    </li>
+    <div id = "edit_streams_modal_output"></div>
+        <script>
+    $(document).ready(function(){
+                //Examples of how to assign the Colorbox event to elements
+                /* $(".group1").colorbox({rel:'group1'});*/
+            });
+
+
+                function previewImage(el) {
+                var element = $(el).parent();
+                var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+                var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+                url = url + info_id;
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        previewurl = data;
+                        $("#file"+fileid).attr('href',previewurl) ;
+                        Shadowbox.setup("#file"+fileid);
+                        $("#file"+fileid).get(0).click();
+                    }
+                });
+                // return true;
+                }
+
+    </script>
+
+<script>
+$('._pop_over').each(function () {
+                   var $this = $(this);
+                   $this.popover({
+                       html:true,
+                       trigger: 'hover',
+                       content: 'Content Here',
+                       container: $this
+                   })
+               });
+</script><script type="text/javascript">
+/*<![CDATA[*/
+$("a[rel=tooltip]").tooltip({html:true});$("a[rel=likesPop]").tooltip({html:true,placement:"bottom",delay:{hide:1000},}).on("click",function(e){e.preventDefault();});$(".recipients").popover({placement:"bottom",html:true,trigger:"click"}).on("click",function(e){e.preventDefault();});$(".leave_popover").popover({placement:"top",html:true,trigger:"hover"}).on("click",function(e){e.preventDefault();});
+/*]]>*/
+</script>
+</div>
+                        </div>
+                    </ul>
+                </div>
+                
+                <div class="clearfix"></div>
+            </div>
+            <div id="edit_comp_bus_modal_output"></div>
+            <!-- Modal -->
+            <div id="assigned_weekly_off_view" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="border-bottom:0;padding-bottom:0">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title site-color" id="myModalLabel"></h4>
+                            <br />
+                            <div class="divide-line"></div>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div class="modal-body">
+                            <p><table class="table table-hover" cellspacing="0" id="assign_weekly_off">
+                                <thead>
+                                    <tr class="text-uppercase tr-bg1">
+                                        <th>User Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table></p>
+                        </div>
+            <!-- <div class="modal-footer">
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- /.modal -->
+<script type="text/javascript">$(function () {
+    $(".nav-dashboard").addClass('active');
+});</script>
+<!-- request jquery -->
+<div id="edit_leaves_modal_output"></div>
+<script type="text/javascript">
+    $(".filter_dropdown").on("change", function (e) {
+        if ($(this).val() == 'expense' || $(this).val() == 'streams') {
+            $(".check_revoke").addClass("hidden");
+        } else {
+            $(".check_revoke").removeClass("hidden");
+        }
+    });
+    $('.selectRequest').text($('.boxRequest .defualt-text').text());
+
+    $('.boxRequest').on('change', function () {
+        $('.selectRequest').text($('.boxRequest').find(":selected").text());
+    });
+
+    $('.selectType').text($('.boxType .defualt-text').text());
+
+    $('.boxType').on('change', function () {
+        $('.selectType').text($('.boxType').find(":selected").text());
+    });
+
+    $('.selectAction').text($('.boxAction .defualt-text').text());
+
+    $('.boxAction').on('change', function () {
+        $('.selectAction').text($('.boxAction').find(":selected").text());
+    });
+</script>
+<!-- universal model starts -->    
+<div class="modal fade _sree_modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title site-color" style="font-size:18px;"></h4>
+            </div>
+            <div class="modal-body row" style="max-height:600px;overflow:auto;"></div>
+        </div>
+        <div class="modal-footer"></div>
+    </div>
+</div>
+</div>
+<!-- universal model ends -->
+<div class="modal fade leaves_on_future" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title site-color" style="font-size:18px;"></h4>
+            </div>
+            <div class="modal-body row" style="max-height:600px;overflow:auto;"></div>
+        </div>
+        <div class="modal-footer"></div>
+    </div>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('._pop_over').each(function () {
+            var $this = $(this);
+            $this.popover({
+                html: true,
+                trigger: 'hover',
+                content: 'Content Here',
+                container: $this
+            })
+        });
+
+        $(document.body).on('click', '._show_more_leaves', function () {
+            $(".leaves_on_future").modal({
+                backdrop: "static",
+                show: true,
+                keyboard: true
+            });
+//         var content = '';
+//         leave_id = $(this).attr('data-id');
+//         var url = "/dashboard/peopleLeaveFilter";
+//         $.ajax({
+//             url: url,
+//             type: "POST",
+//             dataType: "json",
+//             data: {leave_id: leave_id},
+//             success: function(data) {
+//                 if(data.update != null) {
+//                     value = data.update;
+//                     for(i=0;i<value.length;i++) {
+//                         content += '<div class="leaves_all padding10"><div>&nbsp;</div>';
+//                         content += "<div class=col-md-2><img src="+value[i].profile_pic+" alt="+value[i].user_name+"></div><div class=col-md-10><div>"+value[i].profile_url+"</div><div>"+value[i].leaveDate+"</div></div>";
+//                         content += '</div>';
+//                     }
+
+//                 } else {
+//                     content +="<div class= \'col-sm-4 padding-0 text-left\'>No Employee On Leave</div>";
+//                 }
+//                 $("._sree_modal").find(".modal-title").html('EMPLOYEES ON LEAVE FOR NEXT 7 DAYS');
+//                 $("._sree_modal").find(".modal-body").html(content);
+
+//                 $("._sree_modal").modal({
+//                   backdrop: "static",
+//                   show: true,
+//                   keyboard: true
+//               });
+//             }
+
+//         });
+});
+
+        $(document.body).on('click', '._show_more_events', function () {
+            var id = $(this).attr('data-id');
+//alert('#'+id+'_events_all');
+generateAttendingDataAndFill(id);
+
+$("._sree_modal").modal({
+    backdrop: "static",
+    show: true,
+    keyboard: true
+});
+});
+        $(document.body).on('click', '._show_more_likes', function () {
+            var id = $(this).attr('data-id');
+//alert('#'+id+'_events_all');
+$("._sree_modal").find(".modal-title").html('Likes List');
+$("._sree_modal").find(".modal-body").html($('#' + id + '_likes_all').html());
+
+$("._sree_modal").modal({
+    backdrop: "static",
+    show: true,
+    keyboard: true
+});
+});
+
+    });
+
+</script>
+<script>
+    function previewWorkflowAttachment(el){
+
+        var element = $(el).parent();
+        var info_id = $(element).attr('data-file-id')|| $(element).attr('file-key');
+        var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+        $("body").append("<a id='shadowel'></a>");
+        $.ajax({
+          type: 'POST',
+          url: url+info_id,
+          success: function (data) {
+            data = data.trim();
+            var previewurl = 'https://docs.google.com/viewer?url='+encodeURIComponent(data)+'&embedded=true';
+            $("#shadowel").attr('href',previewurl) ;
+            Shadowbox.setup("#shadowel");
+            $("#shadowel").get(0).click();
+            $("#shadowel").remove();
+        }
+    });
+
+    }
+
+
+
+    function previewImage(el) {
+        var element = $(el).parent();
+        var info_id = $(element).attr('data-file-id') || $(element).attr('file-key');
+        var url = info_id.indexOf('/') == -1 ? '/messages/attachment/id/' : '/employee/previewlink?key=';
+        $("body").append("<a id='shadowel'></a>");
+        $.ajax({
+          type: 'POST',
+          url: url+info_id,
+          success: function (data) {
+            var previewurl = data ;
+            $("#shadowel").attr('href',previewurl) ;
+            Shadowbox.setup("#shadowel");
+            $("#shadowel").get(0).click();
+            $("#shadowel").remove();
+        }
+    });
+    }
+    $(document).ready(function(){
+        var x = $('.how-are-you').height();
+        if(x >= 80){
+            $('.overflowscroller-tab1').css({'max-height':'500px','min-height':'450px'});
+        }
+    })
+</script>                <!--Outer Shell-->
+        </div>
+    </div> <!-- /container -->
+
+    <footer>
+        <div class="footer">
+            <div class="col-md-12 text-right footerDiv">
+                <a href="https://darwinbox.com" target="_blank"><span>Powered by:</span> darwinbox</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </footer>
+
+    <div id="waiter" style="display: none;">
+        <div id="server_handshake">
+            <!-- <div id="spinner"><img src="/images/darwinbox-hold-on.gif" onclick="$('#waiter').hide();"></div> -->
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+          </div>
+      </div>
+  </div>
+<script type="text/javascript">
+/*<![CDATA[*/
+jQuery(function($) {
+jQuery('a[rel="tooltip"]').tooltip();
+
+                                                 Shadowbox.init({
+                                                   handleOversize: "drag",
+                                                   modal: true
+                                               });
+        
+
+
+           $(document.body).on("click",".leave_app_rej", function(e) {
+            e.preventDefault();
+            var leave = $(this).attr("id").split("_");
+
+            $.ajax({
+                type: "POST",
+                data: {"action":leave[1],"Messages[id]":leave[2],"Leave[id]":leave[3],"Leave[manager_message]":""},
+                dataType: "json",
+                url: "/messages/LeaveActionEmailOrRequestPage",
+                success: function(data) {
+
+                                                                // Change color
+                    $("#request_thread_"+leave[2]).attr("class", "alert alert-warning clearfix requestDiv");
+
+                    if(leave[1] === "approve"){
+                        $("#request_thread_"+leave[2]+" .btn-hoverlayer").empty().html('<strong>Approved </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                    }else{
+                        $("#request_thread_"+leave[2]+" .btn-hoverlayer").empty().html('<strong>Rejected </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                    }
+                }
+            });
+        });
+
+        $(document.body).on("click",".leave_response", function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            var leave = $(this).attr("id").split("_leave_");
+            var type = $("#page_type").val();
+
+                                                        // Get main div id
+            var main_div_id = $(this).parents("span").attr("data-parent");
+
+                                                        // Get color div id
+            var color_div_id = $("#"+main_div_id+" div:first-child").attr("id");
+
+            $.ajax({
+                type: "POST",
+                data: $("#leave_form_" + leave[1]).serialize() + "&action="+leave[0],
+                dataType: "json",
+                url: "/messages/leaveAction",
+                success: function(data) {
+                    if(data.status =="success"){
+                        $("#book_" + leave[1]).html(data.update);
+                                                                    // Hide Slider
+                        $("#book_"+main_div_id).hide();
+                                                                    // Change color
+                        $("#request_thread_"+leave[1]).attr("class", "alert alert-success clearfix requestDiv");
+                    }else{
+                        showNotification({
+                            message: data.error,
+                            type: "error",
+                            autoClose: true,
+                            duration: 10
+                        });
+                    }
+                }
+            });
+        }); 
+
+           $(document.body).on("click",".attendance_app_rej", function(e) {
+            e.preventDefault();
+            var attendance = $(this).attr("id").split("_");
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: {action:attendance[1],id:attendance[2]},
+                url: "/request/process",
+                success: function(data) {
+                  if(data.status =="success"){
+
+                            // Change color
+                    $("#request_thread_"+attendance[2]).attr("class", "alert alert-success clearfix requestDiv");
+
+                    if(attendance[1] === "accept"){
+                        $("#request_thread_"+attendance[2]+" .btn-hoverlayer").empty().html('<strong>Approved </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                    }else{
+                        $("#request_thread_"+attendance[2]+" .btn-hoverlayer").empty().html('<strong>Rejected </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                    }
+                }else{
+                    showNotification({
+                        message: data.error,
+                        type: "error",
+                        autoClose: true,
+                        duration: 10
+                    });
+                }
+            }
+        });
+    });
+
+            $(document.body).on("click",".compoff_app_rej", function(e) {
+                e.preventDefault();
+                var attendance = $(this).attr("id").split("_");
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    data: {action:attendance[1],id:attendance[2]},
+                    url: "/compoff/process",
+                    success: function(data) {
+                      if(data.status =="success"){
+                            // Change color
+                        $("#request_thread_"+attendance[2]).attr("class", "alert alert-success clearfix requestDiv");
+                        if(attendance[1] === "accept"){
+                            $("#request_thread_"+attendance[2]+" .btn-hoverlayer").empty().html('<strong>Approved </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                        }else{
+                            $("#request_thread_"+attendance[2]+" .btn-hoverlayer").empty().html('<strong>Rejected </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                        }
+                    }else{
+                        showNotification({
+                            message: data.error,
+                            type: "error",
+                            autoClose: true,
+                            duration: 10
+                        });
+                    }
+                }
+            });
+        });
+
+           $(document.body).on("click", ".reimbursement_app_rej",function(e){
+            e.preventDefault();
+            var reimbursement = $(this).attr("id").split("_");
+            $.ajax({
+                type: "POST",
+                data: {id:reimbursement[0],action: reimbursement[1], comment: ""},
+                dataType: "json",
+                url: "/messages/ReimbursementProcess",
+                success: function(data) {
+                  if(data.status =="success"){
+
+                    $(".showHideButton_"+reimbursement[0]).hide();
+
+                            // Change color
+                    $("#request_thread_"+reimbursement[0]).attr("class", "alert alert-success clearfix requestDiv");
+
+                    if(reimbursement[1] === "1"){
+                        $("#request_thread_"+reimbursement[0]+" .btn-hoverlayer").empty().html('<strong>Approved </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                    }else{
+                        $("#request_thread_"+reimbursement[0]+" .btn-hoverlayer").empty().html('<strong>Rejected </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                    }
+                }else{
+                    showNotification({
+                        message: data.error,
+                        type: "error",
+                        autoClose: true,
+                        duration: 10
+                    });
+                }
+            }
+        });
+    });
+    
+
+           $(document.body).on("click", ".invite_app_rej",function(e){
+            e.preventDefault();
+            var invite = $(this).attr("id").split("_");
+            $.ajax({
+                type: "POST",
+                data: {id:invite[2],action: invite[1], request_from: "requestspending"},
+                dataType: "json",
+                url: "/notifications/processRequest",
+                success: function(data) {
+                  if(data.status =="success"){
+
+                            // Change color
+                    $("#request_thread_"+invite[2]).attr("class", "alert alert-success clearfix requestDiv");
+
+                    if(invite[1] === "accept"){
+                        $("#request_thread_"+invite[2]+" .btn-hoverlayer").empty().html('<strong>Approved </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                    }else{
+                        $("#request_thread_"+invite[2]+" .btn-hoverlayer").empty().html('<strong>Rejected </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                    }
+                }else{
+                    showNotification({
+                        message: data.error,
+                        type: "error",
+                        autoClose: true,
+                        duration: 10
+                    });
+                }
+            }
+        });
+    });
+    
+
+         $(document.body).on("click", ".request_message_attendance",function(e) {
+          e.preventDefault();
+          var request = $(this).attr("id").split("_request_"); //message id
+          var managerresponse = $("textarea#attendance-message-box-text").val();
+          $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: {action:request[0],id:request[1],managerresponse:managerresponse},
+            url: "/request/process",
+            success: function(data) {
+              if(data.status =="success"){
+                $("#ar_status_container_"+data.request).html("");
+                $("#ar_status_container_"+data.request).html(data.update);
+                showNotification({
+                  message: data.update,
+                  type: "success",
+                  autoClose: true,
+                  duration: 5
+                });
+              }else{
+                showNotification({
+                  message: data.error,
+                  type: "error",
+                  autoClose: true,
+                  duration: 5
+                });
+              }
+            }
+          });
+        });
+
+           $(document.body).on("click", ".hrletter_app_rej",function(e){
+            e.preventDefault();
+            var letterrequest = $(this).attr("id").split("_");
+            var comment = $("#message-box-text").val();
+            $.ajax({
+                type: "POST",
+                data: {id:letterrequest[0],action: letterrequest[1], comment: comment},
+                dataType: "json",
+                url: "/messages/RequestProcess",
+                success: function(data) {
+                  if(data.status =="success"){
+
+                            // Change color
+                    $("#request_thread_"+letterrequest[0]).attr("class", "alert alert-success clearfix requestDiv");
+
+                    if(letterrequest[1] === "2"){
+                        $("#request_thread_"+letterrequest[0]+" .btn-hoverlayer").empty().html('<strong>Approved </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                    }else{
+                        $("#request_thread_"+letterrequest[0]+" .btn-hoverlayer").empty().html('<strong>Rejected </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                    }
+                }else{
+                    showNotification({
+                        message: data.error,
+                        type: "error",
+                        autoClose: true,
+                        duration: 10
+                    });
+                }
+            }
+        });
+    });
+
+    $(document.body).on("click", ".letter_response",function(e) {
+        e.preventDefault();
+        var letterrequest = $(this).attr("id").split("_");
+        var comment = $("#message-box-text").val();
+        var type = $("#page_type").val();
+
+                                                        // Get main div id
+        var main_div_id = $(this).parents("span").attr("data-parent");
+
+                                                        // Get color div id
+        var color_div_id = $("#"+main_div_id+" div:first-child").attr("id");
+
+        $.ajax({
+            type: "POST",
+            data: {id:letterrequest[0],action: letterrequest[1], comment: comment},
+            dataType: "json",
+            url: "/messages/RequestProcess",
+            success: function(data) {
+                if(data.status =="success"){
+                    $("#book_" + letterrequest[0]).html(data.update);
+                                                                    // Hide Slider
+                    $("#book_"+main_div_id).hide();
+                                                                    // Change color
+                    $("#request_thread_"+letterrequest[0]).attr("class", "alert alert-success clearfix requestDiv");
+                }else{
+                    showNotification({
+                        message: data.error,
+                        type: "error",
+                        autoClose: true,
+                        duration: 10
+                    });
+                }
+            }
+        });
+    });
+
+    
+
+           var globWhose = true;
+           $("._sree_dropdown_menu input,._sree_dropdown_menu select").click(function (e) { e.stopPropagation(); });
+           $("._sree_dropdown_menu li").click(function(){
+               $("._sree_dropdown_toggle b").remove().appendTo($("._sree_dropdown_toggle").text($(this).text()));
+               $("#whose-select").val($(this).children("a").attr("role"));
+               globWhose = true;
+               requestsfilters();
+           });
+
+           $("#_sree_whose").autocomplete({
+               minLength: 3,
+               serviceUrl: "/dashboard/GetEmployees",
+               onSelect: function (suggestion) {
+                   $("._sree_dropdown_toggle b").remove().appendTo($("._sree_dropdown_toggle").text(suggestion.value));
+                   $("._sree_dropdown").removeClass("open");
+                   $("#_sree_whose").val("");
+                   $("#whose").val(suggestion.id);
+                   globWhose = false;
+                   requestsfilters();
+                   return suggestion;
+               }
+           });
+           $("#whose").change(function(){
+            var checkcall = $("#whose").val();
+            if(checkcall != null && checkcall != ""){
+                globWhose = false;
+                requestsfilters();
+                $("._sree_dropdown_toggle b").remove().appendTo($("._sree_dropdown_toggle").text($("#whose option:selected").text()));
+                $("._sree_dropdown").removeClass("open");
+            }
+        });
+        $("#which").change(function(){
+            requestsfilters();
+        });
+        $("#action").change(function(){
+            requestsfilters();
+        });
+
+        function requestsfilters(){
+            if (!globWhose) {
+                var whose = $("#whose").val();
+            } else {
+                var whose = $("#whose-select").val();
+            }
+
+            var which = $("#which").val();
+            var type = $("#hidden_type").val();
+            var action = $("#action").val();
+
+            $.ajax({
+                type: "POST",
+                data: {"whose": whose,"which": which,"type": type,"action":action},
+                dataType: "json",
+                url: "/dashboard/filter",
+                success: function(data) {
+                    if(data.update != "")
+                    {
+                        $("#main_data").empty();
+                        $("#append_more_record").empty();
+                        $("#main_data").html(data.update);
+                        $("#more-message-container").show();
+                        $("#updated_count").val("10");
+                        $("#scroll").val("scroll");
+                    }
+                    else
+                    {
+                        $("#append_more_record").empty();
+                        $("#more-message-container").hide();
+                        $("#main_data").html("<div class='no-tasks text-center'><img src='https://darwinbox.darwinbox.in/images/darwinbox/smiley.png' alt='..' /><h3>Good Job</h3><h4>No More Pending Requests Today</h4></div>");
+                        $("#append_more_record").empty();
+                        $("#scroll").val("noscroll");
+                    }
+                }
+            });
+
+        }
+
+         Shadowbox.init({
+          handleOversize: "drag",
+          modal: true
+        });
+        
+
+         trimMessageText();
+         
+
+            //Top Message Toggle
+         $(document.body).on("click", "#message_tags_toggle",function(e) {
+          e.preventDefault();
+          $(".message-tags-int").slideToggle("normal").toggleClass("hide");
+          $("#message_top_tags").tagedit({
+            autocompleteURL: "/messages/taglist",
+            autocompleteOptions: {minLength: 0},
+            breakKeyCodes: [13,44,59]
+          });
+          $("div.message-module ul.tagedit-list").click();
+          $("div.message-module ul.tagedit-list input#tagedit-input").css("width", "100px;");
+        });
+
+            //Reply Messages Get Existing Tags
+        $(document.body).on("click", ".message_reply_tags_toggle",function(e) {
+          e.preventDefault();
+          var reply_id = $(this).attr("id").replace("reply_tags_","");
+          $("#message-tags-show-"+reply_id).slideToggle("normal").toggleClass("hide");
+          $("#message-tags-edit-"+reply_id).slideToggle("normal").toggleClass("hide");
+          var formid = "#message_tags_form"+reply_id;
+          $(formid+" input.tags").tagedit({
+            autocompleteURL: "/messages/taglist",
+            autocompleteOptions: {minLength: 0},
+            breakKeyCodes: [13,44,59,32]
+          });
+          $("#message-tags-edit-" + reply_id + " ul.tagedit-list").click();
+        });
+
+            //Reply Messages Submit Tags
+        $(document.body).on("keyup", ".message-tags-reply #tagedit-input",function(e) {
+          e.preventDefault();
+          if (e.keyCode == 13) {
+            var tagsForm = $(this).closest("form");
+            $.ajax({
+              type: "POST",
+              data: tagsForm.serialize(),
+              dataType: "json",
+              url: tagsForm.attr("action"),
+              success: function(data) {
+                if(data.status == "success"){
+                  $("#message_show_tags_"+data.elem).html("").html(data.show);
+                  $("#message_edit_tags_"+data.elem).html("").html(data.edit);
+                }else{
+                  showNotification({
+                    message: data.message,
+                    type: "error",
+                    autoClose: true,
+                    duration: 5
+                  });
+                }
+              }
+            });
+          }
+        });
+
+         var params = {"controller":"dashboard","action":"index","getparams":[]}
+         $(document.body).on("click", ".message-filters a",function(e) {
+          e.preventDefault();
+          var $this = $(this);
+          var filterType = $this.attr("id");
+          $(".icon-highlight").removeClass("icon-highlight");
+          $("#icon-"+filterType).addClass("icon-highlight");
+          if(filterType != "message_more") {
+            $.ajax({
+              type: "POST",
+              data: {filter:filterType, params:params},
+              dataType: "json",
+              url: "/messages/filter",
+              success: function(data) {
+                var $li = $this.parent("li");
+                var $ul = $("#message-filter-tabs li");
+                $ul.each(function() {
+                  if($(this).hasClass("active")) {
+                    $(this).removeClass("active");
+                  }
+                });
+                $li.addClass("active");
+                $("#message_input_filter").html(data.update);
+                mentionsAutoComplete();
+              }
+            });
+          }
+          $("ul#message-filter-tabs").removeClass("ui-tabs").removeClass("ui-widget").removeClass("ui-widget-content").removeClass("ui-corner-all");
+        });
+        
+
+         $("body").on("keyup", ".reply-message-module #message-box-text",function(e) {
+          e.preventDefault();
+          if (e.keyCode == 13) {
+            if(e.shiftKey){
+              this.value = content.substring(0, caret - 1) + "\n" + content.substring(caret, content.length);
+              event.stopPropagation();
+            }else{
+              var $this = $(this);
+              var formData = $(this).closest("form");
+              if($this.val().trim()!=""){
+                $.ajax({
+                  type: "POST",
+                  data: formData.serialize(),
+                  dataType: "json",
+                  url: formData.attr("action"),
+                  beforeSend: function() {
+                                                               // e.target.value = "Posting...";
+                   $this.attr("disabled","disabled");
+                 },
+                 success: function(data) {
+                  if(data.status == "success") {
+                    $(".reply-comment-error").remove();
+                    $("#"+data.message).append(data.update);
+                    var msg_id = data.message.replace("message_replies_","");
+                    $("#thread_reply_"+msg_id).html("");
+                    $("#thread_reply_"+msg_id).html(data.reply);
+
+                  } else {
+                    var errorContent = "<div class='reply-comment-error alert-message warning fade in' data-alert='alert'><button type='button' class='close' data-dismiss='alert'>&times;</button><p>"+data.error+"</p></div>";
+                    $("#"+data.message).html(errorContent);
+                                                                    // e.target.value = "Share";
+                  }
+                  mentionsAutoComplete();
+                  trimMessageText();
+                  Shadowbox.setup("a.shadowbox");
+                  $this.removeAttr("disabled","disabled");
+                },
+              });
+            }
+          }
+        }
+      });
+
+         $(document.body).on("click", ".submit-poll",function(e) {
+          e.preventDefault();
+          var pollID = $(this).attr("id").split("_");
+          $.ajax({
+            type: "POST",
+            data: $("#poll_form_"+pollID[1]).serialize(),
+            dataType: "json",
+            url: "/messages/submitPoll",
+            success: function(data) {
+              $("#attachment-"+pollID[1]).html(data.update);
+            }
+          });
+        });
+
+         $(document.body).on("click", ".leave_response",function(e) {
+          e.preventDefault();
+          var leave = $(this).attr("id").split("_leave_");
+          $.ajax({
+            type: "POST",
+            data: $("#leave_form_" + leave[1]).serialize() + "&action="+leave[0],
+            dataType: "json",
+            url: "/messages/leaveAction",
+            success: function(data) {
+              $("#attachment-" + leave[1]).html(data.update);
+            }
+          });
+        });
+
+         $(document.body).on("click", ".open_reply",function(e) {
+          e.preventDefault();
+          var replyID = $(this).attr("id").split("reply_");
+          $("#thread_reply_"+replyID[1]).slideToggle("normal").toggleClass("hide");
+          $(".reply-message").focus();
+          return false;
+        });
+
+         $(document.body).on("change", "#event_month",function(e) {
+          var month = $(this).val();
+          $.ajax({
+            type: "POST",
+            data: "month="+month,
+            dataType: "json",
+            url: "/messages/daysListAJAX",
+            success: function(data) {
+              $("#event_day option").each(function(i, option){ $(option).remove(); });
+              var today = new Date();
+              $(data.update).each(function() {
+                if(today.getDate() == this.value) {
+                  var option = "<option value=\""+this.value+"\" selected=\"selected\">"+this.label+"</option>";
+                } else {
+                  var option = "<option value=\""+this.value+"\" >"+this.label+"</option>";
+                }
+
+                $("#event_day").append(option);
+              });
+            }
+          });
+        });
+
+         $(document.body).on("click", ".change-event-rsvp",function(e) {
+          e.preventDefault();
+          var eventID = $(this).attr("id").replace("event-rsvp-","");
+          $("#change-event-rsvp-"+eventID).toggleClass("hidden");
+        });
+        $(document.body).on("click", ".submit-event",function(e) {
+          e.preventDefault();
+          var eventID = $(this).attr("id").split("_");
+          $.ajax({
+            type: "POST",
+            data: $("#event_form_"+eventID[1]).serialize(),
+            dataType: "json",
+            url: "/messages/submitEvent",
+            success: function(data) {
+              $("#attachment-"+eventID[1]).html(data.update);
+              trimMessageText();
+            }
+          });
+        });
+
+         $(document.body).on("click", ".messageUnlike",function(e) {
+          e.preventDefault();
+          var msgid = $(this).attr("id");
+          var mid = msgid.split("unlike_");
+          $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: "message_id="+mid[1],
+            url: "/messages/unlike",
+            success: function(data) {
+              $("#likeby_"+mid[1]).html(data.update);
+            }
+          });
+          return false;
+        });
+
+         $(document.body).on("click", ".messageLike",function(e) {
+          e.preventDefault();
+          var msgid = $(this).attr("id");
+          var mid = msgid.split("like_");
+          $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: {message_id: mid[1]},
+            url: "/messages/like",
+            success: function(data) {
+              $("#likeby_"+mid[1]).html(data.update);
+            }
+          });
+          return false;
+        });
+
+         $(document.body).on("click", ".group_request_form a",function(e) {
+          e.preventDefault();
+          var group = $(this).attr("id").split("_request_");
+          $.ajax({
+            type: "POST",
+            data: {group: group[1], action: group[0]},
+            dataType: "json",
+            url: "/groups/request",
+            success: function(data) {
+              $("#attachment-"+group[1]).html(data.update);
+            }
+          });
+        });
+
+         $(document.body).on("click", "a.fileicon-close",function(e) {
+          e.preventDefault();
+          var $this = $(this);
+          var filename = $this.prev().val();
+          var file_key = $this.next().next().next().next().next().val();
+          if(confirm("Are you sure you want to delete this file?")){
+            $.ajax({
+              data: {file: filename, key: file_key},
+              dataType: "json",
+              url: "/document/deleteFile",
+              success: function(data) {
+                if(data == null) {
+                  $this.parent("li").remove();
+                } else if(data.status == "success") {
+                  $this.parent("li").remove();
+                } else {
+                  showNotification({
+                    message: data.error,
+                    type: "error",
+                    autoClose: true,
+                    duration: 5
+                  });
+                }
+              }
+            });
+          }
+        });
+
+         $(document.body).on("change", "#primary-filter",function(e) {
+          e.preventDefault();
+          var from = $(this).val();
+          $.ajax({
+            type: "POST",
+            data: {"from": from, "params":params},
+            dataType: "json",
+            url: "/messages/filterFrom",
+            success: function(data) {
+              $(".message_feed").html("");
+              $(".message_feed").html(data.update);
+              trimMessageText();
+            }
+          });
+
+        });
+        
+
+           $(document.body).on("click", "a.delete-message",function(e){
+            e.preventDefault();
+            if(confirm("Are you sure you want to delete this message?\nWarning: All data associated with this message will also be deleted.")) {
+              var data = $(this).attr("id").split("_delete_");
+              $.ajax({
+                type: "POST",
+                data: {type: data[0], id: data[1]},
+                dataType: "json",
+                url: "/messages/delete",
+                success: function(datanew) {
+                  if(datanew.status == "success") {
+                    if(data[0] == "thread"){
+                      $(datanew.update).parent().remove();
+                    }
+                    else{
+                      $(datanew.update).remove();
+                    }
+                  } else {
+                    alert(datanew.error);
+                  }
+                }
+              });
+            }
+          });
+          
+
+           $(document.body).on("click", "a.edit-message",function(e){
+            e.preventDefault();
+            var data = $(this).attr("id").split("_edit_");
+            $.ajax({
+              type: "POST",
+              data: {type: data[0], id: data[1]},
+              dataType: "json",
+              url: "/messages/edit",
+              success: function(data) {
+                if(data.status == "success") {
+                  $("#edit_streams_modal_output").html("").html(data.update);
+                  $("#edit_streams_modal").modal({
+                    backdrop: "static",
+                    show: true,
+                    keyboard: true
+                  });
+                }
+              }
+            });
+
+          });
+          
+
+           Shadowbox.init({
+            handleOversize: "drag",
+            modal: true
+          });
+          
+
+
+   var timeout;
+
+//                                          $(window).scroll(function() {
+//                                             if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+//                                                 clearTimeout(timeout);  
+//                                                 timeout = setTimeout(function() {
+//                                                     var $this = $("#showmore");
+//                                                     if ($("#scroll").val() === "scroll") {
+//                                                         showMoreUpdatesAJAX($this);
+//                                                     }
+//                                                 }, 50);
+
+
+// }
+// });
+
+   $(document.body).on("click", "#showmore",function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    showMoreUpdatesAJAX($this);
+});
+
+function showMoreUpdatesAJAX($this) {
+    $.ajax({
+        type: "POST",
+        data: {                
+            count: $("#updated_count").val(),
+            whose: $("#whose").val(),                                                                                                                    
+            which: $("#which").val(),
+            action: $("#action").val(),
+            type: 1,              
+        },
+        dataType: "json",
+        url: "/dashboard/showMore",
+        success: function(data) {
+            if(data.update == "")
+            {
+                $("#more-message-container").hide();
+                $("#scroll").val("noscroll");
+            }
+            else{
+                $("#append_more_record").append(data.update);
+                $("#updated_count").val(data.updated_count);
+                $("#taken").val(data.taken);
+                $("#more-message-container").show();
+                $("#scroll").val("scroll");
+            }
+            hesh = $("#updated_count").val();
+        }
+    });
+}
+
+
+                                         $("a.more-replies").on("click", function(e) {
+                                          e.preventDefault();
+                                          var $this = $(this);
+                                          var messageID = $this.attr("id").replace("show_all_replies_","");
+                                          $.ajax({
+                                            type: "POST",
+                                            data: {message: messageID},
+                                            dataType: "json",
+                                            url: "/messages/showAllReplies",
+                                            success: function(data) {
+                                              $("#message_replies_"+data.message).html("");
+                                              $("#message_replies_"+data.message).html(data.update);
+                                              $("#message_replies_more_"+data.message).remove();
+                                            }
+                                          });
+});
+
+            servertime = parseFloat($("#servertime").val())*1000;
+            $("div.timeclock").clock({"timestamp":servertime});
+            
+
+                $(document.body).on("click", ".attendance-logger-widget",function(e){
+                    e.preventDefault();
+                    var $this = $(this);
+                    if($this.attr("disabled") == "disabled"){
+                        return false;
+                    }
+                    
+                    var action = $this.attr("value");
+                    $.ajax({
+                        data: {user: "5a438f818a64b"},
+                        dataType: "json",
+                        url: "/attendance/attendance/log",              
+                        success: function(data) {
+                            if(data.status == "success") {                            
+                                $(".attendance-logger-widget").text(data.label);
+                                if($(".attendance-logger-widget").hasClass("clock-out-dash")){
+                                    $(".attendance-logger-widget").removeClass("clock-out-dash");
+                                }else{
+                                 $(".attendance-logger-widget").removeClass("clock-out-dash");
+                             }
+                             $(".attendance-logger-widget").addClass(data.class);
+                             callBack();    
+
+                         }else if(data.status == "failure"){
+                            $(".attendance-logger-widget").attr("data-content", data.error).attr("rel", "likesPop");
+                            showNotification({
+                                message: data.error,
+                                type: "error",
+                                autoClose: true,
+                                duration: 5
+                            });    
+
+}
+}
+});
+
+});
+
+function callBack(){
+    
+}
+
+
+   $(document.body).on("click",".clickme",function()
+   {
+    var id = $(this).attr("id");
+    var mode = $(this).attr("mode");
+// ajax call will get data here for approve or reject the leave / message...
+    $( "#book_"+id ).slideDown( "fast", function(e)
+    {
+        $( "#book_"+id ).html("Loading..."); // Show loading icon / image here...
+        if($(this).hasClass("hidden"))
+        {
+            $.ajax({
+                type: "POST",
+                data: {
+                    id: id,               
+                    mode: mode,               
+                },
+                dataType: "json",
+                url: "/messages/threadrequest",
+                success: function(data) {
+//alert(data.update);
+                    if(data.update != "")
+                    {
+                        $("#book_"+id).html(data.update);
+                        $("#book_"+id).removeClass("hidden").addClass("shown");
+                        $("#button_"+id).addClass("hidden");
+                    }
+                    else{
+                        $("#book_"+id).html("<div class=\"alert alert-danger\">Error while loading data. Please contact support!</div>");
+                    }
+                }
+            });
+        }
+        else{
+            $( "#book_"+id ).slideUp("slow");
+            $("#book_"+id).removeClass("shown").addClass("hidden");
+            $("#button_"+id).removeClass("hidden");
+        }
+    });
+
+});
+
+
+   $(document.body).on("click", ".leave_edits",function(e){
+    e.preventDefault();
+    var $this = $(this);
+    var message_id = $this.attr("id");
+    var leave_id = $this.attr("leave");
+    $.ajax({
+        type: "POST",
+        data: {message: message_id, leave: leave_id, mode: "open"},
+        dataType: "json",
+        url: "/messages/leavesEdit",
+        success: function(data) {
+            if (data.status == "success") {
+                $("#edit_leaves_modal_output").html("");
+                $("#edit_leaves_modal_output").html(data.update);
+                $("#edit_leaves_modal").modal({
+                    backdrop: "static",
+                    show: true,
+                    keyboard: true
+                });
+            }
+        }
+    });
+});
+
+$(document.body).on("click", "#leaves_update_btn",function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var editLeavesForm = $(this).closest("form");
+    var editLeavesFormdata = new FormData($(this).closest("form")[0]);
+    $.ajax({
+        type: "POST",
+        data: editLeavesFormdata,
+        dataType: "json",
+        url: editLeavesForm.attr("action"),
+        contentType: false,
+        processData: false,
+        success: function(data) {
+            if (data.status == "success") {
+                $("#edit_leaves_modal").modal("hide").remove();
+                $(".modal-backdrop").removeClass("in");
+                $("#"+data.elem).html("").html(data.update);
+                showNotification({
+                    message: data.message,
+                    type: "success",
+                    autoClose: true,
+                    duration: 10
+                });
+                window.location.reload();
+            } else {
+                $("#input-error").html("").html(data.error);
+                showNotification({
+                    message: data.message,
+                    type: "error",
+                    autoClose: true,
+                    duration: 10
+                });
+            }
+        }
+    });
+});
+// show task data
+$(document.body).on("click",".assigned-weeklyoff",function(){
+    var $this = $(this);
+    var task_id  = $this.attr("id");
+    var label = "task_list";
+    $.ajax({
+        type: "POST",
+        data:{"id":task_id,"header":label},
+        dataType: "json",
+        url: "/dashboard/GetTaskData",
+        success: function(data) {
+            if (data.status == "success") {
+                $("#myModalLabel").html("").html(data.heading);
+                $("#assign_weekly_off").dataTable({
+                    "bDestroy": true,
+                    "aaData" : data.update
+                });
+            }
+        }
+    });
+});
+
+
+   $(document.body).on("click", ".emotion_clicked" ,function(e){
+// e.preventDefault();
+    var id = this.id;
+    $("#emoji_clicked").val(id);
+});
+
+
+$(document.body).on("click", ".submit_pulse_btn",function(e) {
+    e.preventDefault();
+    var editBusForm = $(this).closest("form");
+    $.ajax({
+        type: "POST",
+        data: editBusForm.serialize(),
+        dataType: "json",
+        url: editBusForm.attr("action"),
+        success: function(data) {
+//console.log(data.update);
+            if (data.status == "success") {
+                $(".drop-menu-use").addClass("hidden");
+//$(".emotion_clicked").addClass("hidden");
+                $("#" +data.update).addClass("active");
+                $(".title-to-change").html("").html("Company Average");
+
+                showNotification({
+                    message: data.message,
+                    type: "success",
+                    autoClose: true,
+                    duration: 5
+                });
+//business_unit.fnReloadAjax("/settings/getBusinessUnits");
+//window.location.reload();
+            } else {
+                $("#input-error").html("").html(data.error).removeClass("hidden");
+                showNotification({
+                    message: data.message,
+                    type: "error",
+                    autoClose: true,
+                    duration: 5
+                });
+            }
+        }
+    });
+});
+$(document.body).on("click", "#task_refresh",function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+//data: {action: action,user_id: user_id},
+        dataType: "json",
+        url: "/task/index",
+        success: function(data) {
+            if (data.status == "success") {
+                showNotification({
+                    message: data.message,
+                    type: "success",
+                    autoClose: true,
+                    duration: 5
+                });
+                window.location.reload();
+            } else {
+
+            }
+        }
+    });
+});
+
+
+   $(document.body).on("click", "#people_leave_showmore" ,function(e){
+    e.preventDefault();
+    var $this = $(this);
+    var bus = $this.attr("id");
+    $.ajax({
+        type: "POST",
+        data: {resource: bus, mode: "open"},
+        dataType: "json",
+        url: "/dashboard/PeopleLeaveFilter",
+        success: function(data) {
+            if (data.status == "success") {
+                $("#edit_comp_bus_modal_output").html("");
+                $("#edit_comp_bus_modal_output").html(data.update);
+                $("#edit_comp_bus_modal").modal({
+                    backdrop: "static",
+                    show: true,
+                    keyboard: true
+                });
+            }
+        }
+    });
+});  
+
+
+                                                 $(document).ajaxStart(function (){
+                                                  $("#waiter").show();
+                                                });
+        $(document).ajaxStop(function (){
+          $("#waiter").hide();
+        });
+        
+
+                                                 $("form").submit(function(){
+                                                  $(this).find("input[type=\"submit\"]").click(function(){
+                                                    return false;
+                                                  });
+      });
+        
+
+                                                 $(".date_picker").datepicker({
+                                                  showAnim: "fold",
+                                                  changeMonth: true,
+                                                  changeYear: true,
+                                                  dateFormat: "yy-mm-dd",
+                                                  yearRange: "c-100:",
+                                                });
+        
+
+                                                 var hash = window.location.hash;
+                                                 $("a[href='"+hash+"']").trigger("click");
+                                                 
+
+                     $.widget("custom.catcomplete", $.ui.autocomplete, {
+                      _renderMenu: function(ul, items) {
+                        var self = this,
+                        currentCategory = "";
+                        $.each(items, function(index, item) {
+                          if (item.category != currentCategory) {
+                            ul.append("<li class='ui-autocomplete-category ui-autocomp-people'><div><b>" + item.category + "</b></div></li>");
+                            currentCategory = item.category;
+                          }
+                          self._renderItem(ul, item);
+                        });
+                      },
+                      _renderItem: function (ul,item) {
+                        return $( "<li class='autocomp-item'></li>" )
+                        .data( "ui-autocomplete-item", item )
+                        .append( "<a>" + item.icon + "<span>" + item.label + "</span>" + "<span class='caption'>" + item.desc + "</span>" + "</a>" )
+                        .appendTo( ul );
+                      }
+                    });
+
+                    $("#globalsearch").catcomplete({
+                      delay: 0,
+                      minLength: 3,
+                      source: "/messages/search",
+                      focus: function(event,ui){
+                        return false;
+                      },
+                      select: function(event,ui) {
+                        window.location.href = ui.item.link;
+                      }
+                    });
+                    
+
+                     $(document.body).on("click", ".dashbutton_nav",function(e) {
+                      e.preventDefault();
+                      var $this = $(this);
+                      var res = $this.attr("id");
+                      if(res != "") {
+                        $.ajax({
+                          data: {filter: res},
+                          dataType: "json",
+                          url: "/dashboard/getWidgetData",
+                          beforeSend: function() {
+                            if($("#db_widget_modal").length > 0) {
+                              $("#db_widget_modal").remove();
+                            }
+                          },
+                          success: function(data) {
+                            if (data.status == "success") {
+                              $("#modal_output").html("").html(data.update);
+                              $("#db_widget_modal").modal({backdrop:true, show:true, keyboard: true});
+                            }
+                          }
+                        });
+                      } else {
+                        window.location.href = $(this).attr("href");
+                      }
+                    });
+                    
+
+                     $(document.body).on("click", ".changeaccess",function(e) {
+                      e.preventDefault();
+                      $.ajax({
+                        dataType: "json",
+                        url: "/dashboard/changeAccess",
+                        success: function(data) {
+                          if (data.status == "success") {
+                            var url = "/dashboard"; 
+                            window.location.href = url;
+                          }
+                        }
+                      });
+                    });
+                    
+
+                     $(document).ready(function(){
+                                             //updateNoifications();   
+                     });    
+
+                     /*setInterval(updateNoifications, 60000);  commented this line because its taking lot of server resources this line makes the notifications load automatically every 60 secs*/
+
+
+                     function updateNoifications(){
+                      $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "/notifications/show",
+                        success: function(data) {
+                          if(data.status == "success"){
+                        // title count 
+                            if(data.request_unread_count != null || data.notification_unread_count != null){
+                              var counts = 0;
+                              var request_count = (!isNaN(data.request_unread_count))? data.request_unread_count : 0;
+                              var notification_count = (!isNaN(data.notification_unread_count))? data.notification_unread_count : 0;
+                              counts = request_count + notification_count;
+                              $("#darwinbox-title-id").html("").html("("+counts+") darwinbox - Sum Up Your HR");
+                            }else{
+                              $("#darwinbox-title-id").html("").html("darwinbox");
+                            }
+
+        // notifications requests update
+                            $("#notification-menu").html("").html(data.update_notifications);
+
+                            if(data.request_unread_count != null){
+                              $("#request-count span").html("").html("&nbsp;&nbsp;"+data.request_unread_count+"&nbsp;&nbsp;");
+                            }
+
+                            if(data.notification_unread_count != null){
+                              $("#notification-count span").html("").html("&nbsp;&nbsp;"+data.notification_unread_count+"&nbsp;&nbsp;");
+                            }
+
+                          }
+                        },
+                        beforeSend: function(){
+                          var urlpathname = window.location.pathname;
+                          var hidediv = true;
+
+                          switch (urlpathname) {
+                            case "/leaves": hidediv = false; break;
+                            case "/manage/calendar": hidediv = false; break;
+                          }
+
+                          if(hidediv)
+                          {
+                            $("#waiter").hide();
+                          }
+                        }
+                      });
+                    }
+
+                    
+
+                     $(document.body).on("click", ".request_attendance",function(e) {
+                      e.preventDefault();
+                      var request = $(this).attr("id").split("_request_"); //notification id
+                      $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        data: {action:request[0],id:request[1]},
+                        url: "/request/process",
+                        success: function(data) {
+                          if(data.status =="success"){
+                            $("#ar_status_container_"+data.request).html("");
+                            $("#ar_status_container_"+data.request).html(data.update);
+                            showNotification({
+                              message: data.update,
+                              type: "success",
+                              autoClose: true,
+                              duration: 5
+                            });
+                          }else{
+                            showNotification({
+                              message: data.error,
+                              type: "error",
+                              autoClose: true,
+                              duration: 5
+                            });
+                          }
+                        }
+                      });
+                    });
+
+    //attendance log response
+                    $(document.body).on("click", ".request_message_attendance_log",function(e) {
+                      e.preventDefault();
+                      var request = $(this).attr("id").split("_requestlog_");
+                      var managerresponse = $("textarea#attendance-message-box-text").val();
+                      $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        data: {action:request[0],id:request[1],managerresponse : managerresponse},
+                        url: "/request/process",
+                        success: function(data) {
+                          if(data.status =="success"){
+                            $("#arl_status_container_"+data.request).html("");
+                            $("#arl_status_container_"+data.request).html(data.update);
+                            showNotification({
+                              message: data.update,
+                              type: "success",
+                              autoClose: true,
+                              duration: 5
+                            });
+                          }else{
+                            showNotification({
+                              message: data.error,
+                              type: "error",
+                              autoClose: true,
+                              duration: 5
+                            });
+                          }
+                        }
+                      });
+                    });
+//compoff log response
+                    $(document.body).on("click", ".request_message_compoff_log",function(e) {
+                      e.preventDefault();
+                      var request = $(this).attr("id").split("_requestlog_");
+//        console.log("action "+request[0]);
+                      var reqid=request[1];
+                      $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        data: {action:request[0],id:request[1]},
+                        url: "/compoff/process",
+                        success: function(data) {
+                          if(data.status =="success"){
+                            $("#arl_status_container_"+data.request).html("");
+                            $("#arl_status_container_"+data.request).html(data.update);
+                            $("#compoff_accept_"+reqid).addClass("hide");
+                            $("#compoff_reject_"+reqid).addClass("hide");
+                            showNotification({
+                              message: data.update,
+                              type: "success",
+                              autoClose: true,
+                              duration: 5
+                            });
+                          }else{
+                            showNotification({
+                              message: data.error,
+                              type: "error",
+                              autoClose: true,
+                              duration: 5
+                            });
+                          }
+                        }
+                      });
+                    });
+//optional holiday
+                    $(document.body).on("click",".request_optional_holiday", function(e) {
+                      e.preventDefault();
+                      var optionalholiday = $(this).attr("id").split("_");
+                      var message=$(this).parents().eq(1).find("textarea").val();
+                      $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        data: {action:optionalholiday[1],id:optionalholiday[2],opid:optionalholiday[3],message:message},
+                        url: "/Optionalholiday/process",
+                        success: function(data) {
+                          if(data.status =="success"){
+                // Change color
+                            $("#request_thread_"+optionalholiday[2]).attr("class", "alert alert-success clearfix requestDiv");
+                            if(optionalholiday[1] === "approve"){
+                              $("#request_thread_"+optionalholiday[2]+" .btn-hoverlayer").empty().html('<strong>Approved </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                            }else if(optionalholiday[1] === "decline"){
+                              $("#request_thread_"+optionalholiday[2]+" .btn-hoverlayer").empty().html('<strong>Rejected </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                            }else{
+                              $("#request_thread_"+optionalholiday[2]+" .btn-hoverlayer").empty().html('<strong>Revoked </strong>by <a target="_blank" class="site-color" href="https://dbox.darwinbox.in/employee/view/id/97837">Chaitanya Nvk</a>');
+                            }
+                            $("#book_"+optionalholiday[2]).hide();
+                            $("#optionalholiday_approve_"+optionalholiday[2]+"_"+optionalholiday[3]).addClass("hidden");
+                            $("#message-box-text").addClass("hidden");
+                            $("#optionalholiday_decline_"+optionalholiday[2]+"_"+optionalholiday[3]).addClass("hidden");
+                            $("#optionalholiday_revoke_"+optionalholiday[2]+"_"+optionalholiday[3]).addClass("hidden");
+                          }else{
+                            showNotification({
+                              message: data.error,
+                              type: "error",
+                              autoClose: true,
+                              duration: 5,
+                            });
+                          }
+                        }
+                      });
+                    });//optional holiday
+                    
+});
+/*]]>*/
+</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"b2f0be28e7","applicationID":"27650753","transactionName":"Y1BRMkNVW0FRBRBfXFoacgVFXVpcHyIFRVtWWlIUVXdaXEQUC1pfUUccD19QUEo=","queueTime":0,"applicationTime":864,"atts":"TxdSRAtPSE8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+<script>
+
+// FILE TYPES THAT SHOULD BE PREVIEWED BROWSER ONLY
+var shadow_box_gv_ignore = {};
+shadow_box_gv_ignore.ext = [] ;
+shadow_box_gv_ignore.modules = [] ;
+shadow_box_gv_ignore.tenants = [] ;
+shadow_box_gv_ignore.tenant_id = "11";
+$(document).ready(function(){
+    //console.log("window height : " + $(window).height());
+    //console.log("doc height : " + $(".container-full").height());
+    $(".container-minheight").css("min-height" , ($(window).height() - 121));
+});
+// datepicker dropdown on modal
+$.fn.modal.Constructor.prototype.enforceFocus = function () {};
+// datepicker dropdown on modal
+</script>
+<!-- INTERCOM CODE -->
+<!-- INTERCOM CODE -->
+</html>
+<link rel="stylesheet" href="/css/stt.css">   
+<script type="text/javascript" src="/js/stt.js"></script>
+<script>
+  stt_init({bind_to:"all"});
+</script>
