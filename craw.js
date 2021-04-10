@@ -5,6 +5,7 @@ var cheerio = require('cheerio');
 var elasticsearch = require('elasticsearch');
 const EventEmitter = require('events');
 var eventEmitter = new EventEmitter();
+var md5 = require('md5');
 
 // this function finds the every occurance of the 'find',in 'str' and replaces it with 'replace'
 function replaceAll(str, find, replace) {
@@ -98,7 +99,8 @@ new Crawler().configure(config)
             var temp = hir.split(".")[2]
             if (temp != null)
                 var uname = (temp.split("/")[1])
-            var obj = { 'title': site + " " + uname, 'link': hir, 'meta': o['des'] };
+            var hash = md5(hir);
+            var obj = { 'title': site + " " + uname, 'link': hir, 'meta': o['des'], 'hash':hash };
         }
         // o[title].push(data);
         console.log(obj);
