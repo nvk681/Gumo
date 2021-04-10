@@ -128,5 +128,5 @@ new Crawler().configure(config)
         a = a + 1;
 
         //Throwing the event once page is read
-        eventEmitter.emit('readPage', "Completed the render and got the required json");
+        eventEmitter.emit('readPage', obj);
     });
