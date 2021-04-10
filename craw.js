@@ -3,6 +3,9 @@ var config = JSON.parse(fs.readFileSync('config.json'));
 var Crawler = require(config.crawler);
 var cheerio = require('cheerio');
 var elasticsearch = require('elasticsearch');
+const EventEmitter = require('events');
+var eventEmitter = new EventEmitter();
+
 // this function finds the every occurance of the 'find',in 'str' and replaces it with 'replace'
 function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
@@ -12,6 +15,7 @@ var client = new elasticsearch.Client({
         config.elastic
     ]
 });
+
 //this creates index for insertion in elasticsearch
 client.indices.create({
     index: config.index
@@ -31,6 +35,10 @@ config.shouldCrawlLinksFrom = function(url) {
         return false
     }
 };
+
+eventEmitter.on('readPage', (msg) => {
+    console.log(msg);
+});
 
 var a = 1;
 new Crawler().configure(config)
@@ -118,4 +126,7 @@ new Crawler().configure(config)
         });
 
         a = a + 1;
+
+        //Throwing the event once page is read
+        eventEmitter.emit('readPage', "Completed the render and got the required json");
     });
