@@ -8,14 +8,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://gitlab.com/nvk777/crawler.git"
+        "url": "https://github.com/nvk681/Kumo"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://gitlab.com/nvk777/crawler/issues"
+        "url": "https://github.com/nvk681/Kumo"
     },
-    "homepage": "https://gitlab.com/nvk777/crawler#README",
+    "homepage": "https://github.com/nvk681/Kumo#README",
     "dependencies": {
         "cheerio": "^1.0.0-rc.2",
         "elasticsearch": "^14.1.0",
