@@ -38,33 +38,28 @@ config.shouldCrawlLinksFrom = function(url) {
 };
 
 eventEmitter.on('readPage', (msg) => {
-    // console.log(msg);
-    console.log("Read the page boi");
+    
+    client.index({
+        id: msg.hash, 
+        index: config.index,
+        type: 'pages',
+        body: JSON.stringify(msg)
+    }, function(err, resp, status) {
+        console.log(resp);
+    });
+
 });
 
 var a = 1;
 new Crawler().configure(config)
     .crawl(config.url, function onSuccess(page) {
-        console.log(page.url);
-        //console.log(page.content);
 
         var hir = page.url.replace(config.url, '');
-
-        //un comment the below line to know the stripped string from url
-        // console.log(hir);
         var $ = cheerio.load(page.content);
         var title = $('meta[name="title"]').attr('content');
-        console.log(title);
-
-
-        var intent = $('meta[name="intent"]').attr('content');
-        if (typeof intent == 'undefined') {
-            intent = 'navigate';
-        }
         var des = $('meta[name="description"]').attr('content');
         var key = $('meta[name="key-words"]').attr('content');
-        var intentseq = intent.split(" ");
-        console.log(intent);
+        
 
         var o = {}; // empty Object
         o[title] = [];
@@ -76,21 +71,6 @@ new Crawler().configure(config)
         txt = replaceAll(txt, '\n', ' ');
         //This line of code replaces all the spaces that may be duplicated, it repaces multiple spaces with a single space so it will be more useful
         txt = txt.replace(/\s+/g, ' ').trim();
-        var data = {
-            'intent': intent,
-            'text': txt
-        };
-
-        intentseq.forEach(function(item) {
-            // console.log(item);
-            var init_code = $('meta[name=' + item + ']').attr('content');
-            o[title].push({ 'intent': item, 'init': init_code });
-
-
-        });
-        //console.log(o[title]);
-
-        console.log(o['des']);
 
 
         if (page.url.indexOf(config.url) !== -1) {
@@ -103,29 +83,15 @@ new Crawler().configure(config)
             var hash = md5(hir);
             var obj = { 'title': site + " " + uname, 'link': hir, 'meta': o['des'], 'hash':hash };
         }
-        // o[title].push(data);
-        // console.log(obj);
-        //  console.log($('body').text());
-        //console.log(body);
-        client.index({
-            index: config.index,
-            type: 'pages',
-            body: JSON.stringify(obj)
-        }, function(err, resp, status) {
-            console.log(resp);
-        });
-
+        
+        
         fs.writeFile('output/html/' + title + '.html', hir + (page.content), function(err) {
-
             if (err) throw err;
-            console.log('Saved html!');
         });
 
 
         fs.writeFile('output/json/' + title + '.json', JSON.stringify(obj), function(err) {
-
             if (err) throw err;
-            console.log('Saved json!');
         });
 
         a = a + 1;
