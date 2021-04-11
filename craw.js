@@ -38,7 +38,8 @@ config.shouldCrawlLinksFrom = function(url) {
 };
 
 eventEmitter.on('readPage', (msg) => {
-    console.log(msg);
+    // console.log(msg);
+    console.log("Read the page boi");
 });
 
 var a = 1;
@@ -103,7 +104,7 @@ new Crawler().configure(config)
             var obj = { 'title': site + " " + uname, 'link': hir, 'meta': o['des'], 'hash':hash };
         }
         // o[title].push(data);
-        console.log(obj);
+        // console.log(obj);
         //  console.log($('body').text());
         //console.log(body);
         client.index({
