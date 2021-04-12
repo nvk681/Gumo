@@ -23,6 +23,7 @@
         "get-json": "^1.0.0",
         "html2json": "^1.0.2",
         "js-crawler": "^0.3.19",
-        "md5": "^2.3.0"
+        "md5": "^2.3.0",
+        "sanitize-filename": "^1.6.3"
     }
 }

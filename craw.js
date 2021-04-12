@@ -6,6 +6,7 @@ var elasticsearch = require('elasticsearch');
 const EventEmitter = require('events');
 var eventEmitter = new EventEmitter();
 var md5 = require('md5');
+var sanitize = require("sanitize-filename");
 
 // this function finds the every occurance of the 'find',in 'str' and replaces it with 'replace'
 function replaceAll(str, find, replace) {
@@ -38,9 +39,9 @@ config.shouldCrawlLinksFrom = function(url) {
 };
 
 eventEmitter.on('readPage', (msg) => {
-    
+
     client.index({
-        id: msg.hash, 
+        id: msg.hash,
         index: config.index,
         type: 'pages',
         body: JSON.stringify(msg)
@@ -54,12 +55,12 @@ var a = 1;
 new Crawler().configure(config)
     .crawl(config.url, function onSuccess(page) {
 
-        var hir = page.url.replace(config.url, '');
         var $ = cheerio.load(page.content);
-        var title = $('meta[name="title"]').attr('content');
+        var title = $('meta[name="title"]').attr("content") || $("title").text();
         var des = $('meta[name="description"]').attr('content');
         var key = $('meta[name="key-words"]').attr('content');
-        
+        var ref = page.referer;
+
 
         var o = {}; // empty Object
         o[title] = [];
@@ -72,30 +73,27 @@ new Crawler().configure(config)
         //This line of code replaces all the spaces that may be duplicated, it repaces multiple spaces with a single space so it will be more useful
         txt = txt.replace(/\s+/g, ' ').trim();
 
+        const allowedHost = (new URL(config.url)).hostname;
+        const currentHost = (new URL(page.url)).hostname;
 
-        if (page.url.indexOf(config.url) !== -1) {
-            var obj = { 'title': title, 'link': hir, 'intent_pool': o[title], 'dump': txt, 'meta': o['des'] };
-        } else {
-            var site = hir.split(".")[1]
-            var temp = hir.split(".")[2]
-            if (temp != null)
-                var uname = (temp.split("/")[1])
-            var hash = md5(hir);
-            var obj = { 'title': site + " " + uname, 'link': hir, 'meta': o['des'], 'hash':hash };
+        if (currentHost == allowedHost) {
+            var hash = md5(page.url);
+
+            var obj = { 'title': title, 'link': page.url, 'parent': ref, 'dump': txt, 'meta': o['des'], 'hash': hash };
+
+            var fname = sanitize(title);
+            fs.writeFile('output/html/' + fname + '.html', page.url + (page.content), function(err) {
+                if (err) throw err;
+            });
+
+
+            fs.writeFile('output/json/' + fname + '.json', JSON.stringify(obj), function(err) {
+                if (err) throw err;
+            });
+
+            a = a + 1;
+
+            //Throwing the event once page is read
+            eventEmitter.emit('readPage', obj);
         }
-        
-        
-        fs.writeFile('output/html/' + title + '.html', hir + (page.content), function(err) {
-            if (err) throw err;
-        });
-
-
-        fs.writeFile('output/json/' + title + '.json', JSON.stringify(obj), function(err) {
-            if (err) throw err;
-        });
-
-        a = a + 1;
-
-        //Throwing the event once page is read
-        eventEmitter.emit('readPage', obj);
     });
