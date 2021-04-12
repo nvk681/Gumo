@@ -11,5 +11,12 @@
 
     "depth": 2256,
     "elastic": "http://localhost:9200",
+    "neo4j": {
+        "uri": "neo4j://localhost",
+        "auth": {
+            "user": "neo4j",
+            "password": "kumo123"
+        }
+    },
     "index": "docs"
 }

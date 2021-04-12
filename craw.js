@@ -8,6 +8,13 @@ var eventEmitter = new EventEmitter();
 var md5 = require('md5');
 var sanitize = require("sanitize-filename");
 
+if (config.neo4j) {
+    const graphHandler = require("./libs/graphHandler.js")(
+        config,
+        eventEmitter
+    );
+}
+
 // this function finds the every occurance of the 'find',in 'str' and replaces it with 'replace'
 function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
