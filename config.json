@@ -9,7 +9,7 @@
     "maxRequestsPerSecond": 5000,
     "maxConcurrentRequests": 5000,
 
-    "depth": 2256,
+    "depth": 3,
     "elastic": "http://localhost:9200",
     "neo4j": {
         "uri": "neo4j://localhost",

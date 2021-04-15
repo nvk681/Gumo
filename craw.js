@@ -58,7 +58,6 @@ eventEmitter.on('readPage', (msg) => {
 
 });
 
-var a = 1;
 new Crawler().configure(config)
     .crawl(config.url, function onSuccess(page) {
 
@@ -97,8 +96,6 @@ new Crawler().configure(config)
             fs.writeFile('output/json/' + fname + '.json', JSON.stringify(obj), function(err) {
                 if (err) throw err;
             });
-
-            a = a + 1;
 
             //Throwing the event once page is read
             eventEmitter.emit('readPage', obj);

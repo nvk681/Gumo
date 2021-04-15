@@ -1,10 +1,12 @@
 var request = require('request');
 var _ = require('underscore');
 var url = require('url');
+var fs = require('fs');
+var config = JSON.parse(fs.readFileSync('./config.json'));
 
-var DEFAULT_DEPTH = 2;
-var DEFAULT_MAX_CONCURRENT_REQUESTS = 10;
-var DEFAULT_MAX_REQUESTS_PER_SECOND = 100;
+var DEFAULT_DEPTH = config.depth;
+var DEFAULT_MAX_CONCURRENT_REQUESTS = config.maxConcurrentRequests;
+var DEFAULT_MAX_REQUESTS_PER_SECOND = config.maxRequestsPerSecond;
 var DEFAULT_USERAGENT = 'crawler/js-crawler';
 var DEFAULT_HEADERS = {};
 
