@@ -6,6 +6,8 @@
     "headers": {
         "Cookie": ""
     },
+    "saveOutputAsHtml":"No",
+    "saveOutputAsJson":"No",
     "maxRequestsPerSecond": 5000,
     "maxConcurrentRequests": 5000,
     "whiteList": [

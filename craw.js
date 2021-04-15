@@ -88,15 +88,17 @@ new Crawler().configure(config)
             var obj = { 'title': title, 'link': page.url, 'parent': ref, 'dump': txt, 'meta': o['des'], 'hash': hash };
 
             var fname = sanitize(title);
-            fs.writeFile('output/html/' + fname + '.html', page.url + (page.content), function(err) {
-                if (err) throw err;
-            });
-
-
-            fs.writeFile('output/json/' + fname + '.json', JSON.stringify(obj), function(err) {
-                if (err) throw err;
-            });
-
+            if(config.saveOutputAsHtml == "Yes"){
+                fs.writeFile('output/html/' + fname + '.html', page.url + (page.content), function(err) {
+                    if (err) throw err;
+                });
+            }
+           
+            if(config.saveOutputAsJson == "Yes"){
+                fs.writeFile('output/json/' + fname + '.json', JSON.stringify(obj), function(err) {
+                    if (err) throw err;
+                });
+            }
             //Throwing the event once page is read
             eventEmitter.emit('readPage', obj);
         }
