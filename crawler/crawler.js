@@ -89,7 +89,7 @@ function Crawler () {
 
   this.shouldCrawl = function (url) {
     let returnValue = null
-    if (!(typeof config.whiteList === 'undefined') && !(config.whiteList === null) && Array.isArray(config.whiteList) && config.whiteList.length != 0) {
+    if (!(typeof config.whiteList === 'undefined') && !(config.whiteList === null) && Array.isArray(config.whiteList) && config.whiteList.length !== 0) {
       config.whiteList.forEach(element => {
         if (url.includes(element)) {
           returnValue = true
@@ -99,7 +99,7 @@ function Crawler () {
         returnValue = false
       }
     }
-    if (!(typeof config.blackList === 'undefined') && !(config.blackList === null) && Array.isArray(config.blackList) && config.blackList.length != 0) {
+    if (!(typeof config.blackList === 'undefined') && !(config.blackList === null) && Array.isArray(config.blackList) && config.blackList.length !== 0) {
       config.blackList.forEach(element => {
         if (url.includes(element)) {
           returnValue = false
@@ -193,7 +193,7 @@ Crawler.prototype._requestUrl = function (options, callback) {
   const url = options.url
 
   // Do not request a url if it has already been crawled
-  if (_.contains(self._currentUrlsToCrawl, url) ||  _.contains(self.knownUrls, url)) {
+  if (_.contains(self._currentUrlsToCrawl, url) || _.contains(self.knownUrls, url)) {
     return
   }
 
@@ -323,7 +323,7 @@ Crawler.prototype._getBaseUrl = function (defaultBaseUrl, body) {
 }
 
 Crawler.prototype._isLinkProtocolSupported = function (link) {
-  return (link.indexOf('://') < 0 &&  link.indexOf('mailto:') < 0) ||  link.indexOf('http://') >= 0 ||  link.indexOf('https://') >= 0
+  return (link.indexOf('://') < 0 && link.indexOf('mailto:') < 0) || link.indexOf('http://') >= 0 || link.indexOf('https://') >= 0
 }
 
 Crawler.prototype._getAllUrls = function (defaultBaseUrl, body) {
