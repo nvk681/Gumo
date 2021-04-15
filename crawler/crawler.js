@@ -88,7 +88,23 @@ function Crawler() {
     this.maxConcurrentRequests = DEFAULT_MAX_CONCURRENT_REQUESTS;
     this.maxRequestsPerSecond = DEFAULT_MAX_REQUESTS_PER_SECOND;
     this.shouldCrawl = function(url) {
-        return true;
+        let return_value = null;
+        if( !(typeof config.whiteList === 'undefined') && !(config.whiteList === null) && Array.isArray(config.whiteList) && config.whiteList.length != 0){
+            config.whiteList.forEach(element => {
+                if(url.includes(element)){
+                    return_value = true;            
+                }
+            });
+            if(return_value === null){
+                return_value = false;
+            }
+        }
+        
+        if((return_value == null)){
+            return_value = true;
+        }
+        console.log(return_value)
+        return return_value;
     };
     this.shouldCrawlLinksFrom = function(url) {
         return true;
@@ -148,16 +164,6 @@ Crawler.prototype.crawl = function(url, onSuccess, onFailure, onAllFinished) {
     return this;
 };
 
-/*
- * TODO: forgetCrawled, _startedCrawling, _finishedCrawling, _requestUrl belong together?
- * Group them together?
- */
-Crawler.prototype.forgetCrawled = function() {
-    this.knownUrls = {};
-    this.crawledUrls = [];
-    return this;
-};
-
 Crawler.prototype._startedCrawling = function(url) {
     if (this._currentUrlsToCrawl.indexOf(url) < 0) {
         this._currentUrlsToCrawl.push(url);
@@ -175,7 +181,6 @@ Crawler.prototype._finishedCrawling = function(url) {
 }
 
 Crawler.prototype._requestUrl = function(options, callback) {
-    //console.log('_requestUrl: options = ', options);
     var self = this;
     var url = options.url;
 
@@ -194,7 +199,6 @@ Crawler.prototype._requestUrl = function(options, callback) {
             self._concurrentRequestNumber--;
         });
     }, null, [options, callback], function shouldSkip() {
-        //console.log('Should skip? url = ', url, _.contains(self.knownUrls, url) || !self.shouldCrawl(url));
         var shouldCrawlUrl = self.shouldCrawl(url);
         if (!shouldCrawlUrl) {
             self._finishedCrawling(url);
@@ -204,7 +208,6 @@ Crawler.prototype._requestUrl = function(options, callback) {
 };
 
 Crawler.prototype._crawlUrl = function(url, referer, depth) {
-    //console.log('_crawlUrl: url = %s, depth = %s', url, depth);
     if ((depth === 0) || this.knownUrls[url]) {
         return;
     }
@@ -235,14 +238,12 @@ Crawler.prototype._crawlUrl = function(url, referer, depth) {
         _.each(self._redirects, function(redirect) {
             self.knownUrls[redirect.redirectUri] = true;
         });
-        //console.log('analyzing url = ', url);
         var isTextContent = self._isTextContent(response);
         var body = isTextContent ? self._getDecodedBody(response) : '<<...binary content (omitted by js-crawler)...>>';
 
         if (!error && (response.statusCode === 200)) {
             //If no redirects, then response.request.uri.href === url, otherwise last url
             var lastUrlInRedirectChain = response.request.uri.href;
-            //console.log('lastUrlInRedirectChain = %s', lastUrlInRedirectChain);
             if (self.shouldCrawl(lastUrlInRedirectChain)) {
                 self.onSuccess({
                     url: lastUrlInRedirectChain,
@@ -286,7 +287,6 @@ Crawler.prototype._getDecodedBody = function(response) {
     if (response.headers['content-encoding']) {
         encoding = response.headers['content-encoding'];
     }
-    //console.log('encoding = "' + encoding + '"');
     var decodedBody;
     try {
         decodedBody = response.body.toString(encoding);
@@ -341,7 +341,6 @@ Crawler.prototype._getAllUrls = function(defaultBaseUrl, body) {
         })
         .value();
 
-    //console.log('urls to crawl = ', urls);
     return urls;
 };
 
