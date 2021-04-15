@@ -87,6 +87,7 @@ function Crawler() {
     this.headers = DEFAULT_HEADERS;
     this.maxConcurrentRequests = DEFAULT_MAX_CONCURRENT_REQUESTS;
     this.maxRequestsPerSecond = DEFAULT_MAX_REQUESTS_PER_SECOND;
+    
     this.shouldCrawl = function(url) {
         let return_value = null;
         if( !(typeof config.whiteList === 'undefined') && !(config.whiteList === null) && Array.isArray(config.whiteList) && config.whiteList.length != 0){
@@ -99,11 +100,19 @@ function Crawler() {
                 return_value = false;
             }
         }
-        
+        if( !(typeof config.blackList === 'undefined') && !(config.blackList === null) && Array.isArray(config.blackList) && config.blackList.length != 0 ){ 
+            config.blackList.forEach(element => { 
+                if(url.includes(element)){ 
+                    return_value = false;
+                } 
+            }); 
+            if(return_value === null){ 
+                return_value = true; 
+            }
+        }
         if((return_value == null)){
             return_value = true;
         }
-        console.log(return_value)
         return return_value;
     };
     this.shouldCrawlLinksFrom = function(url) {
