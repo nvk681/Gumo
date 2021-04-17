@@ -6,8 +6,8 @@
     "headers": {
         "Cookie": ""
     },
-    "saveOutputAsHtml":"No",
-    "saveOutputAsJson":"No",
+    "saveOutputAsHtml": "No",
+    "saveOutputAsJson": "No",
     "maxRequestsPerSecond": 5000,
     "maxConcurrentRequests": 5000,
     "whiteList": [
@@ -16,7 +16,7 @@
     "blackList": [
 
     ],
-    
+
     "depth": 3,
     "elastic": "http://localhost:9200",
     "neo4j": {
