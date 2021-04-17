@@ -2,6 +2,10 @@
 .sonarlint/
 .vscode/
 .idea/
+
+# Node Stuff:
 node_modules
-output
 package-lock.json
+
+# Temporary Directories:
+output
