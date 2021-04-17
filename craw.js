@@ -15,7 +15,7 @@ if (config.neo4j) {
     )
 }
 
-// this function finds the every occurance of the 'find',in 'str' and replaces it with 'replace'
+// this function finds the every occurrence of the 'find',in 'str' and replaces it with 'replace'
 function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace)
 }
@@ -68,9 +68,9 @@ new Crawler().configure(config)
         o.des = []
         o.des.push({ description: des, keywords: key })
         let txt = $('body').text()
-            // As there is the occurance of multiple '\n' in the output text I have replaced it with nothing but a space
+            // As there is the occurrence of multiple '\n' in the output text I have replaced it with nothing but a space
         txt = replaceAll(txt, '\n', ' ')
-            // This line of code replaces all the spaces that may be duplicated, it repaces multiple spaces with a single space so it will be more useful
+            // This line of code replaces all the spaces that may be duplicated, it replaces multiple spaces with a single space so it will be more useful
         txt = txt.replace(/\s+/g, ' ').trim()
 
         const allowedHost = (new URL(config.url)).hostname

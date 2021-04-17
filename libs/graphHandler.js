@@ -17,7 +17,7 @@ module.exports = async function(config, eventEmitter) {
             await createNode(session, msg);
             await createNodesRelationship(session, msg);
         } catch (error) {
-            console.log('GraphDB update exception occured: ', error);
+            console.log('GraphDB update exception occurred: ', error);
         } finally {
             await session.close();
         }
@@ -51,7 +51,7 @@ var createUniqueConstraint = async function(driver) {
             );
         });
     } catch (error) {
-        console.log('GraphDB constraint exception occured: ', error);
+        console.log('GraphDB constraint exception occurred: ', error);
     } finally {
         await session.close();
     }
