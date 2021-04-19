@@ -91,7 +91,3 @@ The sitemap of all the traversed pages is stored in a convenient graph. The foll
 ## TODO
 
 @TODO: Add todo list of planned features here
-
-## Acknowledgements
-
-@TODO: Give a shout-out to the original crawler author or anyone else here?
