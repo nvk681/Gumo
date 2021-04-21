@@ -6,7 +6,7 @@ A web-crawler and scraper that extracts data from a family of nested dynamic web
 
 ## Table of Contents
 
-- [gumo](#gumo)
+- [Gumo](#gumo)
   - [Overview](#overview)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
@@ -18,12 +18,10 @@ A web-crawler and scraper that extracts data from a family of nested dynamic web
     - [Nodes](#nodes)
     - [Relationships](#relationships)
   - [TODO](#todo)
-  - [Acknowledgements](#acknowledgements)
 
 ## Features
 
 - Crawl hyperlinks present on the pages of any domain and its subdomains.
-
 - Scrape meta-tags and body text from every page.
 - Store entire sitemap in a GraphDB (currently supports Neo4J).
 - Store page content in ElasticSearch for easy full-text lookup.
@@ -34,10 +32,19 @@ A web-crawler and scraper that extracts data from a family of nested dynamic web
 
 ## Usage
 
+From code:
+
+```js
 const gumo = require('gumo')
 
 let cron = new gumo()
 cron.insert()
+```
+
+From CLI:
+
+`node gumo`
+
 ## Configuration
 
 The behavior of the crawler can be customized using `config.json`. The following are the attributes which can be configured:
