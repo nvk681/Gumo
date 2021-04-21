@@ -1,8 +1,10 @@
 # Gumo
 
+"Gumo" (蜘蛛) is Japanese for "spider".
+
 ## Overview
 
-A web-crawler and scraper that extracts data from a family of nested dynamic webpages with added enhancements to assist in knowledge mining applications. Written in NodeJS.
+A web-crawler (get it?) and scraper that extracts data from a family of nested dynamic webpages with added enhancements to assist in knowledge mining applications. Written in NodeJS.
 
 ## Table of Contents
 
