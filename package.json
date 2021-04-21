@@ -1,12 +1,13 @@
 {
     "name": "gumo",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A web-crawler and scraper that extracts data from a family of nested dynamic webpages with added enhancements to assist in knowledge mining applications.",
     "main": "gumo.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "npm install",
-        "start": "npm run dev"
+        "start": "npm run dev",
+        "dev": "node index.js"
     },
     "repository": {
         "type": "git",
