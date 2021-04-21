@@ -23,7 +23,7 @@
         "uri": "neo4j://localhost",
         "auth": {
             "user": "neo4j",
-            "password": "kumo123"
+            "password": "gumo123"
         }
     },
     "index": "gumo"

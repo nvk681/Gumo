@@ -1,4 +1,4 @@
-const kumo = require('./kumo.js')
+const gumo = require('./gumo.js')
 
-let cron = new kumo()
+let cron = new gumo()
 cron.insert()

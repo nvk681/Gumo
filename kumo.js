@@ -55,51 +55,51 @@ eventEmitter.on('readPage', (msg) => {
     })
 })
 
-function kumo () {
+function gumo() {
 
 }
 
-  kumo.prototype.insert = function () {
+gumo.prototype.insert = function() {
     new Crawler().configure(config)
         .crawl(config.url, function onSuccess(page) {
-          const $ = cheerio.load(page.content)
-          const title = $('meta[name="title"]').attr('content') || $('title').text()
-          const des = $('meta[name="description"]').attr('content')
-          const key = $('meta[name="key-words"]').attr('content')
-          const ref = page.referer
-          const o = {} // empty Object
-          o[title] = []
+            const $ = cheerio.load(page.content)
+            const title = $('meta[name="title"]').attr('content') || $('title').text()
+            const des = $('meta[name="description"]').attr('content')
+            const key = $('meta[name="key-words"]').attr('content')
+            const ref = page.referer
+            const o = {} // empty Object
+            o[title] = []
 
-          o.des = []
-          o.des.push({ description: des, keywords: key })
-          let txt = $('body').text()
-              // As there is the occurrence of multiple '\n' in the output text I have replaced it with nothing but a space
-          txt = replaceAll(txt, '\n', ' ')
-              // This line of code replaces all the spaces that may be duplicated, it replaces multiple spaces with a single space so it will be more useful
-          txt = txt.replace(/\s+/g, ' ').trim()
-  
-          const allowedHost = (new URL(config.url)).hostname
-          const currentHost = (new URL(page.url)).hostname
-  
-          if (currentHost === allowedHost) {
-            const hash = md5(page.url)
-            const obj = { title: title, link: page.url, parent: ref, dump: txt, meta: o.des, hash: hash }
-            const fname = sanitize(title)
-            if (config.saveOutputAsHtml === 'Yes') {
-                fs.writeFile('output/html/' + fname + '.html', page.url + (page.content), function(err) {
-                    if (err) throw err
-                })
+            o.des = []
+            o.des.push({ description: des, keywords: key })
+            let txt = $('body').text()
+                // As there is the occurrence of multiple '\n' in the output text I have replaced it with nothing but a space
+            txt = replaceAll(txt, '\n', ' ')
+                // This line of code replaces all the spaces that may be duplicated, it replaces multiple spaces with a single space so it will be more useful
+            txt = txt.replace(/\s+/g, ' ').trim()
+
+            const allowedHost = (new URL(config.url)).hostname
+            const currentHost = (new URL(page.url)).hostname
+
+            if (currentHost === allowedHost) {
+                const hash = md5(page.url)
+                const obj = { title: title, link: page.url, parent: ref, dump: txt, meta: o.des, hash: hash }
+                const fname = sanitize(title)
+                if (config.saveOutputAsHtml === 'Yes') {
+                    fs.writeFile('output/html/' + fname + '.html', page.url + (page.content), function(err) {
+                        if (err) throw err
+                    })
+                }
+                if (config.saveOutputAsJson === 'Yes') {
+                    fs.writeFile('output/json/' + fname + '.json', JSON.stringify(obj), function(err) {
+                        if (err) throw err
+                    })
+                }
+                // Throwing the event once page is read
+                eventEmitter.emit('readPage', obj)
             }
-            if (config.saveOutputAsJson === 'Yes') {
-                fs.writeFile('output/json/' + fname + '.json', JSON.stringify(obj), function(err) {
-                    if (err) throw err
-                })
-            }
-            // Throwing the event once page is read
-            eventEmitter.emit('readPage', obj)
-          }
         })
-    }
+}
 
 
-module.exports = kumo
+module.exports = gumo
