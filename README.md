@@ -103,3 +103,5 @@ The sitemap of all the traversed pages is stored in a convenient graph. The foll
 ## TODO
 
 1) Make it executable from CLI
+2) Enable to send config parameters while invoking the gumo  
+3) Write more tests  
