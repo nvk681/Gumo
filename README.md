@@ -1,38 +1,40 @@
-# Gumo
+# 🕸️Gumo
 
-"Gumo" (蜘蛛) is Japanese for "spider".
+*"Gumo" (蜘蛛) is Japanese for "spider".*
 
-## Overview
+[![npm version](https://badge.fury.io/js/gumo.svg)](https://badge.fury.io/js/gumo) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
+## Overview 👓
 
 A web-crawler (get it?) and scraper that extracts data from a family of nested dynamic webpages with added enhancements to assist in knowledge mining applications. Written in NodeJS.
 
-## Table of Contents
+## Table of Contents 📖
 
-- [Gumo](#gumo)
-  - [Overview](#overview)
-  - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Configuration](#configuration)
-  - [ElasticSearch](#elasticsearch)
-  - [GraphDB](#graphdb)
+- [🕸️Gumo](#️gumo)
+  - [Overview 👓](#overview-)
+  - [Table of Contents 📖](#table-of-contents-)
+  - [Features 🌟](#features-)
+  - [Installation 🏗️](#installation-️)
+  - [Usage 👨‍💻](#usage-)
+  - [Configuration ⚙️](#configuration-️)
+  - [ElasticSearch ⚡](#elasticsearch-)
+  - [GraphDB ☋](#graphdb-)
     - [Nodes](#nodes)
     - [Relationships](#relationships)
-  - [TODO](#todo)
+  - [TODO ☑️](#todo-️)
 
-## Features
+## Features 🌟
 
 - Crawl hyperlinks present on the pages of any domain and its subdomains.
 - Scrape meta-tags and body text from every page.
 - Store entire sitemap in a GraphDB (currently supports Neo4J).
 - Store page content in ElasticSearch for easy full-text lookup.
 
-## Installation
+## Installation 🏗️
 
-`npm install gumo`
+[![NPM](https://nodei.co/npm/gumo.png?mini=true)](https://nodei.co/npm/gumo/)
 
-## Usage
+## Usage 👨‍💻
 
 From code:
 
@@ -43,7 +45,7 @@ let cron = new gumo()
 cron.insert()
 ```
 
-## Configuration
+## Configuration ⚙️
 
 The behavior of the crawler can be customized using `config.json`. The following are the attributes which can be configured:
 
@@ -68,7 +70,7 @@ The behavior of the crawler can be customized using `config.json`. The following
 | neo4j.auth.user       | string        |                          | Neo4J server username                                                                      | undefined              |                                                                          |
 | neo4j.auth.password   | string        |                          | Neo4J server password                                                                      | undefined              |                                                                          |
 
-## ElasticSearch
+## ElasticSearch ⚡
 
 The content of the web page will be stored along with the url, and a hash. The index for the elastic search can be selected through config.json index attribute. If the index already exists in the elastic search it will be used, else it will create one.
 
@@ -77,7 +79,7 @@ The content of the web page will be stored along with the url, and a hash. The i
 **type**: 'pages',
 **body**: JSON.stringify(page content)
 
-## GraphDB
+## GraphDB ☋
 
 The sitemap of all the traversed pages is stored in a convenient graph. The following structure of nodes and relationships is followed:
 
@@ -100,6 +102,6 @@ The sitemap of all the traversed pages is stored in a convenient graph. The foll
 | links_to   | (a)-[r1:links_to]->(b)   | b.link = a.parent |
 | links_from | (b)-[r2:links_from]->(a) | b.link = a.parent |
 
-## TODO
+## TODO ☑️
 
 1) Make it executable from CLI
