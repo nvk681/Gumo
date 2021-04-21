@@ -1,4 +1,4 @@
-# Kumo
+# Gumo
 
 ## Overview
 
@@ -6,7 +6,7 @@ A web-crawler and scraper that extracts data from a family of nested dynamic web
 
 ## Table of Contents
 
-- [Kumo](#kumo)
+- [gumo](#gumo)
   - [Overview](#overview)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
@@ -30,12 +30,14 @@ A web-crawler and scraper that extracts data from a family of nested dynamic web
 
 ## Installation
 
-`npm install @TODO: package name here`
+`npm install gumo`
 
 ## Usage
 
-@TODO: insert usage instructions here
+const gumo = require('gumo')
 
+let cron = new gumo()
+cron.insert()
 ## Configuration
 
 The behavior of the crawler can be customized using `config.json`. The following are the attributes which can be configured:
@@ -48,13 +50,13 @@ The behavior of the crawler can be customized using `config.json`. The following
 | headers.Cookie        | string        |                          | Cookie string to be sent with each request                                                 | "" (empty string)      | Cookies will not be attached to the requests                             |
 | saveOutputAsHtml      | string        | "Yes"/"No"               | Whether or not to store scraped content as HTML files in the output/html/ directory        | "No"                   | Saving output as HTML files is disabled                                  |
 | saveOutputAsJson      | string        | "Yes"/"No"               | Whether or not to store scraped content as JSON files in the output/json/ directory        | "No"                   | Saving output as JSON files is disabled                                  |
-| maxRequestsPerSecond  | int           | @TODO: insert range here | The maximum number of requests to be sent to the target in one second                      | 5000                   |                                                                          |
-| maxConcurrentRequests | int           | @TODO: insert range here | The maximum number of concurrent connections to be created with the host at any given time | 5000                   |                                                                          |
+| maxRequestsPerSecond  | int           | range: 1 to 5000 | The maximum number of requests to be sent to the target in one second                      | 5000                   |                                                                          |
+| maxConcurrentRequests | int           | range: 1 to 5000  | The maximum number of concurrent connections to be created with the host at any given time | 5000                   |                                                                          |
 | whiteList             | Array(string) |                          | If populated, only these URLs will be traversed                                            | [] (empty array)       | All URLs with the same hostname as the "url" attribute will be traversed |
 | blackList             | Array(string) |                          | If populated, these URLs will ignored                                                      | [] (empty array)       |                                                                          |
-| depth                 | int           | @TODO: insert range here | Depth up to which nested hyperlinks will be followed                                        | 3                      |                                                                          |
+| depth                 | int           | range: 1 to 999 | Depth up to which nested hyperlinks will be followed                                        | 3                      |                                                                          |
 | elastic               | string        |                          | URI of the ElasticSearch instance to connect to                                            | "" (empty string)      | ElasticSearch support is disabled                                        |
-| index                 | string        |                          | The name of the ElasticSearch index to store results in                                    | "kumo"                 |                                                                          |
+| index                 | string        |                          | The name of the ElasticSearch index to store results in                                    | "gumo"                 |                                                                          |
 | neo4j                 | object        |                          | Neo4J driver connection information                                                        | {} (empty object)      | GraphDB support is disabled                                              |
 | neo4j.uri             | string        |                          | The URI of a running Neo4J instance (uses the Bolt driver to connect)                      | undefined              |                                                                          |
 | neo4j.auth            | object        |                          | Authentication credentials for the Neo4J server                                            | undefined              |                                                                          |
@@ -63,8 +65,12 @@ The behavior of the crawler can be customized using `config.json`. The following
 
 ## ElasticSearch
 
-@TODO: Add ES related info here
+The content of the web page will be stored alsone with the url, and a hash. The index for the elastic search can be selected through config.json index attribute. If the index already exists in the elastic search it will be used, else it will create one.
 
+**id**: hash,
+**index**: config.index,
+**type**: 'pages',
+**body**: JSON.stringify(page content)
 ## GraphDB
 
 The sitemap of all the traversed pages is stored in a convenient graph. The following structure of nodes and relationships is followed:
@@ -90,4 +96,3 @@ The sitemap of all the traversed pages is stored in a convenient graph. The foll
 
 ## TODO
 
-@TODO: Add todo list of planned features here
