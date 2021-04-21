@@ -1,15 +1,9 @@
 {
-    "name": "kumo",
+    "name": "gumo",
     "version": "1.0.0",
     "description": "A web-crawler and scraper that extracts data from a family of nested dynamic webpages with added enhancements to assist in knowledge mining applications.",
-    "keywords": [
-        "crawler",
-        "web-crawler",
-        "neo4j",
-        "elasticsearch",
-        "knowledge mining"
-    ],
     "main": "kumo.js",
+    "bin": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "npm install",
@@ -21,8 +15,26 @@
         "url": "https://github.com/nvk681/Kumo"
     },
     "author": "https://github.com/nvk681",
-    "maintainers": ["https://github.com/nvk681", "https://github.com/JediRhymeTrix"],
+    "contributors": [
+        "Nuthalapai Venkata Krishna Chaitanya <nvk.681@gmail.com> (https://github.com/nvk681)",
+        "Vedant Vohra <ved914980@gmail.com> (https://github.com/JediRhymeTrix)"
+    ],
     "license": "MIT",
+    "keywords": [
+        "dom",
+        "javascript",
+        "crawling",
+        "web-crawler",
+        "spider",
+        "scraper",
+        "scraping",
+        "jquery",
+        "crawler",
+        "nodejs",
+        "elasticsearch",
+        "neo4j",
+        "knowledge mining"
+    ],
     "bugs": {
         "url": "https://github.com/nvk681/Kumo/issues"
     },
