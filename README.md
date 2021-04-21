@@ -74,12 +74,13 @@ The behavior of the crawler can be customized using `config.json`. The following
 
 ## ElasticSearch
 
-The content of the web page will be stored alsone with the url, and a hash. The index for the elastic search can be selected through config.json index attribute. If the index already exists in the elastic search it will be used, else it will create one.
+The content of the web page will be stored along with the url, and a hash. The index for the elastic search can be selected through config.json index attribute. If the index already exists in the elastic search it will be used, else it will create one.
 
 **id**: hash,
 **index**: config.index,
 **type**: 'pages',
 **body**: JSON.stringify(page content)
+
 ## GraphDB
 
 The sitemap of all the traversed pages is stored in a convenient graph. The following structure of nodes and relationships is followed:
@@ -104,4 +105,3 @@ The sitemap of all the traversed pages is stored in a convenient graph. The foll
 | links_from | (b)-[r2:links_from]->(a) | b.link = a.parent |
 
 ## TODO
-
