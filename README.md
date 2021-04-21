@@ -43,10 +43,6 @@ let cron = new gumo()
 cron.insert()
 ```
 
-From CLI:
-
-`node gumo`
-
 ## Configuration
 
 The behavior of the crawler can be customized using `config.json`. The following are the attributes which can be configured:
@@ -105,3 +101,5 @@ The sitemap of all the traversed pages is stored in a convenient graph. The foll
 | links_from | (b)-[r2:links_from]->(a) | b.link = a.parent |
 
 ## TODO
+
+1) Make it executable from CLI
