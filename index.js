@@ -12,7 +12,14 @@ cron.configure({
         'index' : 'myIndex'
     },
     'crawler': {
-        'url' : ''
+        'url': '',
+        'saveOutputAsHtml': 'No',
+        'saveOutputAsJson': 'No',
+        'maxRequestsPerSecond': 500,
+        'maxConcurrentRequests': 500,
+        'depth': 2,
+        'whiteList': [],
+        'blackList': [],
     }
 });
 cron.insert()

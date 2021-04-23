@@ -16,11 +16,11 @@ const request = require('request')
 const _ = require('underscore')
 const url = require('url')
 const fs = require('fs')
-const config = JSON.parse(fs.readFileSync('./config.json'))
+let config = JSON.parse(fs.readFileSync('./config.json'))
 
-const DEFAULT_DEPTH = config.depth
-const DEFAULT_MAX_CONCURRENT_REQUESTS = config.maxConcurrentRequests
-const DEFAULT_MAX_REQUESTS_PER_SECOND = config.maxRequestsPerSecond
+let DEFAULT_DEPTH = config.depth
+let DEFAULT_MAX_CONCURRENT_REQUESTS = config.maxConcurrentRequests
+let DEFAULT_MAX_REQUESTS_PER_SECOND = config.maxRequestsPerSecond
 const DEFAULT_USERAGENT = 'crawler/js-crawler'
 const DEFAULT_HEADERS = {}
 
@@ -166,10 +166,14 @@ Crawler.prototype._createExecutor = function () {
   })
 }
 
-Crawler.prototype.crawl = function (url, onSuccess, onFailure, onAllFinished) {
+Crawler.prototype.crawl = function (configParm, onSuccess, onFailure, onAllFinished) {
   this.workExecutor = this._createExecutor()
   this.workExecutor.start()
-
+  let url = configParm.url
+  config = configParm
+  DEFAULT_DEPTH = config.depth
+  DEFAULT_MAX_CONCURRENT_REQUESTS = config.maxConcurrentRequests
+  DEFAULT_MAX_REQUESTS_PER_SECOND = config.maxRequestsPerSecond
   if (typeof url !== 'string') {
     const options = url
 

@@ -1,5 +1,5 @@
 const fs = require('fs')
-const config = JSON.parse(fs.readFileSync('config.json'))
+let config = JSON.parse(fs.readFileSync('config.json'))
 const Crawler = require(config.crawler)
 const cheerio = require('cheerio')
 const elasticsearch = require('elasticsearch')
@@ -96,7 +96,7 @@ gumo.prototype.insert = function() {
         throw "Gumo is not configured to execute the insert command.";
     }
     new Crawler().configure(config)
-        .crawl(config.url, function onSuccess(page) {
+        .crawl(config, function onSuccess(page) {
             const $ = cheerio.load(page.content)
             const title = $('meta[name="title"]').attr('content') || $('title').text()
             const des = $('meta[name="description"]').attr('content')
