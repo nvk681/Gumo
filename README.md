@@ -2,7 +2,7 @@
 
 *"Gumo" (蜘蛛) is Japanese for "spider".*
 
-[![npm version](https://badge.fury.io/js/gumo.svg)](https://badge.fury.io/js/gumo) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![npm version](https://badge.fury.io/js/gumo.svg)](//npmjs.com/package/gumo) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://gumo.mit-license.org/)
 
 ## Overview 👓
 
