@@ -10,6 +10,9 @@ cron.configure({
     'elastic': {
         'url' : 'http://localhost:9200',
         'index' : 'myIndex'
+    },
+    'crawler': {
+        'url' : ''
     }
 });
 cron.insert()

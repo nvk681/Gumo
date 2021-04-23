@@ -7,6 +7,8 @@ const EventEmitter = require('events')
 const eventEmitter = new EventEmitter()
 const md5 = require('md5')
 const sanitize = require('sanitize-filename')
+const { isArray } = require('util')
+let isConfigured = false
 
 
 // this function finds the every occurrence of the 'find',in 'str' and replaces it with 'replace'
@@ -51,6 +53,17 @@ gumo.prototype.configure = function(params) {
             config.elastic = (params.elastic.url)? params.elastic.url : config.elastic
             config.index = (params.elastic.index)? params.elastic.index : config.index
         }
+        if(params.crawler && typeof params.crawler === 'object'){
+            config.url = (params.crawler.url)? params.crawler.url : config.url
+            config.saveOutputAsHtml = (params.crawler.saveOutputAsHtml)? params.crawler.saveOutputAsHtml : config.saveOutputAsHtml
+            config.saveOutputAsJson = (params.crawler.saveOutputAsJson)? params.crawler.saveOutputAsJson : config.saveOutputAsJson
+            config.maxRequestsPerSecond = (params.crawler.maxRequestsPerSecond)? params.crawler.maxRequestsPerSecond : config.maxRequestsPerSecond
+            config.maxConcurrentRequests = (params.crawler.maxConcurrentRequests)? params.crawler.maxConcurrentRequests : config.maxConcurrentRequests
+            config.depth = (params.crawler.depth)? params.crawler.depth : config.depth
+            config.whiteList = (params.crawler.whiteList && isArray(params.crawler.whiteList))? params.crawler.whiteList : config.whiteList
+            config.blackList = (params.crawler.blackList && isArray(params.crawler.blackList))? params.crawler.blackList : config.blackList
+            config.headers.Cookie = (params.crawler.Cookie)? params.crawler.Cookie : config.headers.Cookie
+        }
     }
     
     const graphHandler = require('./libs/graphHandler.js')(
@@ -75,9 +88,13 @@ gumo.prototype.configure = function(params) {
             console.log('create', resp)
         }
     })
+    isConfigured = true
 }
 
 gumo.prototype.insert = function() {
+    if(!isConfigured){
+        throw "Gumo is not configured to execute the insert command.";
+    }
     new Crawler().configure(config)
         .crawl(config.url, function onSuccess(page) {
             const $ = cheerio.load(page.content)
