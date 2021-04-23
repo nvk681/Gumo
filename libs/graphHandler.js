@@ -2,7 +2,7 @@ const neo4j = require('neo4j-driver');
 
 module.exports = async function(config, eventEmitter) {
     const creds = config.neo4j.auth;
-    const driver = neo4j.driver(config.neo4j.uri, neo4j.auth.basic(creds.user, creds.password));
+    const driver = neo4j.driver(config.neo4j.url, neo4j.auth.basic(creds.user, creds.password));
 
     createUniqueConstraint(driver);
 

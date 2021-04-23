@@ -20,7 +20,7 @@
     "depth": 3,
     "elastic": "http://localhost:9200",
     "neo4j": {
-        "uri": "neo4j://localhost",
+        "url": "neo4j://localhost",
         "auth": {
             "user": "neo4j",
             "password": "gumo123"

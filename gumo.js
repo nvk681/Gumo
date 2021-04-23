@@ -8,12 +8,6 @@ const eventEmitter = new EventEmitter()
 const md5 = require('md5')
 const sanitize = require('sanitize-filename')
 
-if (config.neo4j) {
-    const graphHandler = require('./libs/graphHandler.js')(
-        config,
-        eventEmitter
-    )
-}
 
 // this function finds the every occurrence of the 'find',in 'str' and replaces it with 'replace'
 function replaceAll(str, find, replace) {
@@ -57,6 +51,22 @@ eventEmitter.on('readPage', (msg) => {
 
 function gumo() {
 
+}
+
+gumo.prototype.configure = function(params) {
+
+    if(params && typeof params === 'object'){
+        if(params.neo4j && typeof params.neo4j === 'object'){
+            config.neo4j.url = (params.neo4j.url)? params.neo4j.url : config.neo4j.url
+            config.neo4j.auth.user = (params.neo4j.user)? params.neo4j.user : config.neo4j.auth.user
+            config.neo4j.auth.password = (params.neo4.password)? params.neo4.password : config.neo4j.auth.password
+        }
+    }
+    
+    const graphHandler = require('./libs/graphHandler.js')(
+        config,
+        eventEmitter
+    )
 }
 
 gumo.prototype.insert = function() {
