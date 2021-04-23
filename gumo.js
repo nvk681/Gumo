@@ -43,29 +43,29 @@ function gumo() {
 
 gumo.prototype.configure = function(params) {
 
-    if(params && typeof params === 'object'){
-        if(params.neo4j && typeof params.neo4j === 'object'){
-            config.neo4j.url = (params.neo4j.url)? params.neo4j.url : config.neo4j.url
-            config.neo4j.auth.user = (params.neo4j.user)? params.neo4j.user : config.neo4j.auth.user
-            config.neo4j.auth.password = (params.neo4j.password)? params.neo4j.password : config.neo4j.auth.password
+    if (params && typeof params === 'object') {
+        if (params.neo4j && typeof params.neo4j === 'object') {
+            config.neo4j.url = (params.neo4j.url) ? params.neo4j.url : config.neo4j.url
+            config.neo4j.auth.user = (params.neo4j.user) ? params.neo4j.user : config.neo4j.auth.user
+            config.neo4j.auth.password = (params.neo4j.password) ? params.neo4j.password : config.neo4j.auth.password
         }
-        if(params.elastic && typeof params.elastic === 'object'){
-            config.elastic = (params.elastic.url)? params.elastic.url : config.elastic
-            config.index = (params.elastic.index)? params.elastic.index : config.index
+        if (params.elastic && typeof params.elastic === 'object') {
+            config.elastic = (params.elastic.url) ? params.elastic.url : config.elastic
+            config.index = (params.elastic.index) ? params.elastic.index : config.index
         }
-        if(params.crawler && typeof params.crawler === 'object'){
-            config.url = (params.crawler.url)? params.crawler.url : config.url
-            config.saveOutputAsHtml = (params.crawler.saveOutputAsHtml)? params.crawler.saveOutputAsHtml : config.saveOutputAsHtml
-            config.saveOutputAsJson = (params.crawler.saveOutputAsJson)? params.crawler.saveOutputAsJson : config.saveOutputAsJson
-            config.maxRequestsPerSecond = (params.crawler.maxRequestsPerSecond)? params.crawler.maxRequestsPerSecond : config.maxRequestsPerSecond
-            config.maxConcurrentRequests = (params.crawler.maxConcurrentRequests)? params.crawler.maxConcurrentRequests : config.maxConcurrentRequests
-            config.depth = (params.crawler.depth)? params.crawler.depth : config.depth
-            config.whiteList = (params.crawler.whiteList && isArray(params.crawler.whiteList))? params.crawler.whiteList : config.whiteList
-            config.blackList = (params.crawler.blackList && isArray(params.crawler.blackList))? params.crawler.blackList : config.blackList
-            config.headers.Cookie = (params.crawler.Cookie)? params.crawler.Cookie : config.headers.Cookie
+        if (params.crawler && typeof params.crawler === 'object') {
+            config.url = (params.crawler.url) ? params.crawler.url : config.url
+            config.saveOutputAsHtml = (params.crawler.saveOutputAsHtml) ? params.crawler.saveOutputAsHtml : config.saveOutputAsHtml
+            config.saveOutputAsJson = (params.crawler.saveOutputAsJson) ? params.crawler.saveOutputAsJson : config.saveOutputAsJson
+            config.maxRequestsPerSecond = (params.crawler.maxRequestsPerSecond) ? params.crawler.maxRequestsPerSecond : config.maxRequestsPerSecond
+            config.maxConcurrentRequests = (params.crawler.maxConcurrentRequests) ? params.crawler.maxConcurrentRequests : config.maxConcurrentRequests
+            config.depth = (params.crawler.depth) ? params.crawler.depth : config.depth
+            config.whiteList = (params.crawler.whiteList && isArray(params.crawler.whiteList)) ? params.crawler.whiteList : config.whiteList
+            config.blackList = (params.crawler.blackList && isArray(params.crawler.blackList)) ? params.crawler.blackList : config.blackList
+            config.headers.Cookie = (params.crawler.Cookie) ? params.crawler.Cookie : config.headers.Cookie
         }
     }
-    
+
     const graphHandler = require('./libs/graphHandler.js')(
         config,
         eventEmitter
@@ -92,8 +92,11 @@ gumo.prototype.configure = function(params) {
 }
 
 gumo.prototype.insert = function() {
-    if(!isConfigured){
+    if (!isConfigured) {
         throw "Gumo is not configured to execute the insert command.";
+    }
+    if (typeof config.url !== 'string' || config.url.length === 0) {
+        throw "crawler.url cannot be empty."
     }
     new Crawler().configure(config)
         .crawl(config, function onSuccess(page) {
