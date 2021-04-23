@@ -123,5 +123,5 @@ The sitemap of all the traversed pages is stored in a convenient graph. The foll
 ## TODO ☑️
 
 - [ ] Make it executable from CLI
-- [ ] Enable to send config parameters while invoking the gumo
+- [x] Enable to send config parameters while invoking the gumo
 - [ ] Write more tests
