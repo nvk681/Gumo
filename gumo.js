@@ -13,22 +13,8 @@ const sanitize = require('sanitize-filename')
 function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace)
 }
-const client = new elasticsearch.Client({
-    hosts: [
-        config.elastic
-    ]
-})
 
-// this creates index for insertion in elasticsearch
-client.indices.create({
-    index: config.index
-}, function(err, resp, status) {
-    if (err) {
-        console.log(err)
-    } else {
-        console.log('create', resp)
-    }
-})
+let elasticSearchClient = null;
 
 config.shouldCrawlLinksFrom = function(url) {
     if (url.indexOf(config.url) !== -1) {
@@ -39,7 +25,7 @@ config.shouldCrawlLinksFrom = function(url) {
 }
 
 eventEmitter.on('readPage', (msg) => {
-    client.index({
+    elasticSearchClient.index({
         id: msg.hash,
         index: config.index,
         type: 'pages',
@@ -59,7 +45,11 @@ gumo.prototype.configure = function(params) {
         if(params.neo4j && typeof params.neo4j === 'object'){
             config.neo4j.url = (params.neo4j.url)? params.neo4j.url : config.neo4j.url
             config.neo4j.auth.user = (params.neo4j.user)? params.neo4j.user : config.neo4j.auth.user
-            config.neo4j.auth.password = (params.neo4.password)? params.neo4.password : config.neo4j.auth.password
+            config.neo4j.auth.password = (params.neo4j.password)? params.neo4j.password : config.neo4j.auth.password
+        }
+        if(params.elastic && typeof params.elastic === 'object'){
+            config.elastic = (params.elastic.url)? params.elastic.url : config.elastic
+            config.index = (params.elastic.index)? params.elastic.index : config.index
         }
     }
     
@@ -67,6 +57,24 @@ gumo.prototype.configure = function(params) {
         config,
         eventEmitter
     )
+
+    elasticSearchClient = new elasticsearch.Client({
+        hosts: [
+            config.elastic
+        ]
+    })
+
+    // this creates index for insertion in elasticsearch
+
+    elasticSearchClient.indices.create({
+        index: config.index
+    }, function(err, resp, status) {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('create', resp)
+        }
+    })
 }
 
 gumo.prototype.insert = function() {

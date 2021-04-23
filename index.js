@@ -6,6 +6,10 @@ cron.configure({
         'url' : 'neo4j://localhost',
         'user' : 'neo4j',
         'password' : 'gumo123'
+    },
+    'elastic': {
+        'url' : 'http://localhost:9200',
+        'index' : 'myIndex'
     }
 });
 cron.insert()
