@@ -11,7 +11,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/nvk681/Kumo"
+        "url": "https://github.com/nvk681/Gumo"
     },
     "contributors": [
         "Nuthalapai Venkata Krishna Chaitanya <nvk.681@gmail.com> (https://github.com/nvk681)",
@@ -34,9 +34,9 @@
         "knowledge mining"
     ],
     "bugs": {
-        "url": "https://github.com/nvk681/Kumo/issues"
+        "url": "https://github.com/nvk681/Gumo/issues"
     },
-    "homepage": "https://github.com/nvk681/Kumo#README",
+    "homepage": "https://github.com/nvk681/Gumo#README",
     "dependencies": {
         "cheerio": "^1.0.0-rc.2",
         "elasticsearch": "^14.1.0",
