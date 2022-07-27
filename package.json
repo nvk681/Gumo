@@ -1,6 +1,6 @@
 {
     "name": "gumo",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "A web-crawler and scraper that extracts data from a family of nested dynamic webpages with added enhancements to assist in knowledge mining applications.",
     "main": "gumo.js",
     "scripts": {
