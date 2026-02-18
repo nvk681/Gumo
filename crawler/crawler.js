@@ -11,13 +11,45 @@
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-*/ 
-const request = require('request')
-const _ = require('underscore')
+*/
 const url = require('url')
 const fs = require('fs')
-let config = JSON.parse(fs.readFileSync('./config.json'))
 
+function noop () {}
+
+function contains (listOrObj, value) {
+  if (Array.isArray(listOrObj)) return listOrObj.includes(value)
+  return Object.prototype.hasOwnProperty.call(listOrObj, value)
+}
+
+async function fetchRequest (options, callback) {
+  try {
+    const res = await fetch(options.url, {
+      redirect: 'follow',
+      headers: options.headers || {}
+    })
+    const arrayBuffer = await res.arrayBuffer()
+    const body = Buffer.from(arrayBuffer)
+    const responseLike = {
+      statusCode: res.status,
+      headers: Object.fromEntries(res.headers.entries()),
+      body,
+      request: { uri: { href: res.url } },
+      _redirect: { redirects: [{ redirectUri: res.url }] }
+    }
+    callback.call(responseLike, null, responseLike, body)
+  } catch (err) {
+    const emptyResponse = { _redirect: { redirects: [] } }
+    callback.call(emptyResponse, err, null, null)
+  }
+}
+const path = require('path')
+let config
+try {
+  config = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'config.json'), 'utf8'))
+} catch (_err) {
+  config = { depth: 3, maxConcurrentRequests: 5000, maxRequestsPerSecond: 5000 }
+}
 let DEFAULT_DEPTH = config.depth
 let DEFAULT_MAX_CONCURRENT_REQUESTS = config.maxConcurrentRequests
 let DEFAULT_MAX_REQUESTS_PER_SECOND = config.maxRequestsPerSecond
@@ -128,15 +160,14 @@ function Crawler () {
     }
     return returnValue
   }
-  this.shouldCrawlLinksFrom = function (url) {
+  this.shouldCrawlLinksFrom = function (_url) {
     return true
   }
   // Urls that are queued for crawling, for some of them HTTP requests may not yet have been issued
   this._currentUrlsToCrawl = []
   this._concurrentRequestNumber = 0
 
-  // Injecting request as a dependency for unit test support
-  this.request = request
+  this.request = fetchRequest
 }
 
 Crawler.prototype.configure = function (options) {
@@ -149,9 +180,9 @@ Crawler.prototype.configure = function (options) {
   this.maxRequestsPerSecond = (options && options.maxRequestsPerSecond) || this.maxRequestsPerSecond
   this.shouldCrawl = (options && options.shouldCrawl) || this.shouldCrawl
   this.shouldCrawlLinksFrom = (options && options.shouldCrawlLinksFrom) || this.shouldCrawlLinksFrom
-  this.onSuccess = _.noop
-  this.onFailure = _.noop
-  this.onAllFinished = _.noop
+  this.onSuccess = noop
+  this.onFailure = noop
+  this.onAllFinished = noop
   return this
 }
 
@@ -211,7 +242,7 @@ Crawler.prototype._requestUrl = function (options, callback) {
   const url = options.url
 
   // Do not request a url if it has already been crawled
-  if (_.contains(self._currentUrlsToCrawl, url) || _.contains(self.knownUrls, url)) {
+  if (contains(self._currentUrlsToCrawl, url) || contains(self.knownUrls, url)) {
     return
   }
 
@@ -229,7 +260,7 @@ Crawler.prototype._requestUrl = function (options, callback) {
     if (!shouldCrawlUrl) {
       self._finishedCrawling(url)
     }
-    return _.contains(self.knownUrls, url) || !shouldCrawlUrl
+    return contains(self.knownUrls, url) || !shouldCrawlUrl
   })
 }
 
@@ -261,7 +292,7 @@ Crawler.prototype._crawlUrl = function (url, referer, depth) {
       return
     }
     self.knownUrls[url] = true
-    _.each(self._redirects, function (redirect) {
+    self._redirects.forEach(function (redirect) {
       self.knownUrls[redirect.redirectUri] = true
     })
     const isTextContent = self._isTextContent(response)
@@ -316,7 +347,7 @@ Crawler.prototype._getDecodedBody = function (response) {
   let decodedBody
   try {
     decodedBody = response.body.toString(encoding)
-  } catch (decodingError) {
+  } catch (_decodingError) {
     decodedBody = response.body.toString(defaultEncoding)
   }
   return decodedBody
@@ -341,7 +372,7 @@ Crawler.prototype._getBaseUrl = function (defaultBaseUrl, body) {
 }
 
 Crawler.prototype._isLinkProtocolSupported = function (link) {
-  return (link.indexOf('://') < 0 && link.indexOf('mailto:') < 0) || link.indexOf('http://') >= 0 || link.indexOf('https://') >= 0
+  return (link.indexOf('://') < 0 && link.indexOf('mailto:') < 0) || link.indexOf('http://') >= 0 || link.indexOf('https://') >= 0
 }
 
 Crawler.prototype._getAllUrls = function (defaultBaseUrl, body) {
@@ -352,27 +383,21 @@ Crawler.prototype._getAllUrls = function (defaultBaseUrl, body) {
   const links = body.match(linksRegex) || []
 
   // console.log('body = ', body);
-  const urls = _.chain(links)
-    .map(function (link) {
-      const match = /href=[\"\'](.*?)[#\"\']/i.exec(link)
-
-      link = match[1]
-      link = url.resolve(baseUrl, link)
-      return link
-    })
-    .uniq()
-    .filter(function (link) {
-      return self._isLinkProtocolSupported(link) && self.shouldCrawl(link)
-    })
-    .value()
-
-  return urls
+  const mapped = links.map(function (link) {
+    const match = /href=["'](.*?)[#"']/i.exec(link)
+    link = match[1]
+    link = url.resolve(baseUrl, link)
+    return link
+  })
+  const uniq = [...new Set(mapped)]
+  return uniq.filter(function (link) {
+    return self._isLinkProtocolSupported(link) && self.shouldCrawl(link)
+  })
 }
 
 Crawler.prototype._crawlUrls = function (urls, referer, depth) {
   const self = this
-
-  _.each(urls, function (url) {
+  urls.forEach(function (url) {
     self._crawlUrl(url, referer, depth)
   })
 }

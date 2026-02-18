@@ -1,8 +1,35 @@
 const fs = require('fs')
-let config = JSON.parse(fs.readFileSync('config.json'))
+const path = require('path')
+
+// Only used when config.json is missing (e.g. require('gumo') as a dependency).
+// Anyone with config.json uses their file; configure() overrides these for everyone.
+const defaultConfig = {
+  url: '',
+  crawler: path.join(__dirname, 'crawler', 'crawler.js'),
+  headers: { Cookie: '' },
+  saveOutputAsHtml: 'No',
+  saveOutputAsJson: 'No',
+  maxRequestsPerSecond: 5000,
+  maxConcurrentRequests: 5000,
+  whiteList: [],
+  blackList: [],
+  depth: 3,
+  elastic: 'http://localhost:9200',
+  neo4j: { url: 'neo4j://localhost', auth: { user: 'neo4j', password: 'gumo123' } },
+  index: 'gumo'
+}
+
+let config
+try {
+  config = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'config.json'), 'utf8'))
+  if (!config.crawler) config.crawler = defaultConfig.crawler
+  else if (!path.isAbsolute(config.crawler)) config.crawler = path.join(process.cwd(), config.crawler)
+} catch (_err) {
+  config = { ...defaultConfig }
+}
 const Crawler = require(config.crawler)
 const cheerio = require('cheerio')
-const elasticsearch = require('elasticsearch')
+const { Client: ElasticsearchClient } = require('@elastic/elasticsearch')
 const EventEmitter = require('events')
 const eventEmitter = new EventEmitter()
 const md5 = require('md5')
@@ -26,15 +53,17 @@ config.shouldCrawlLinksFrom = function(url) {
     }
 }
 
-eventEmitter.on('readPage', (msg) => {
-    elasticSearchClient.index({
-        id: msg.hash,
-        index: config.index,
-        type: 'pages',
-        body: JSON.stringify(msg)
-    }, function(err, resp, status) {
+eventEmitter.on('readPage', async (msg) => {
+    try {
+        const resp = await elasticSearchClient.index({
+            index: config.index,
+            id: msg.hash,
+            document: msg
+        })
         console.log(resp)
-    })
+    } catch (err) {
+        console.log(err)
+    }
 })
 
 function gumo() {
@@ -66,28 +95,19 @@ gumo.prototype.configure = function(params) {
         }
     }
 
-    const graphHandler = require('./libs/graphHandler.js')(
+    const _graphHandler = require('./libs/graphHandler.js')(
         config,
         eventEmitter
     )
 
-    elasticSearchClient = new elasticsearch.Client({
-        hosts: [
-            config.elastic
-        ]
+    elasticSearchClient = new ElasticsearchClient({
+        node: config.elastic
     })
 
-    // this creates index for insertion in elasticsearch
-
-    elasticSearchClient.indices.create({
-        index: config.index
-    }, function(err, resp, status) {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log('create', resp)
-        }
-    })
+    // Create index for insertion in Elasticsearch (idempotent)
+    elasticSearchClient.indices.create({ index: config.index })
+        .then((resp) => console.log('create', resp))
+        .catch((err) => console.log(err))
     isConfigured = true
 }
 

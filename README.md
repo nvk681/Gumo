@@ -2,7 +2,7 @@
 
 *"Gumo" (蜘蛛) is Japanese for "spider".*
 
-[![npm version](https://badge.fury.io/js/gumo.svg)](//npmjs.com/package/gumo) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://gumo.mit-license.org/)
+[![npm version](https://badge.fury.io/js/gumo.svg)](//npmjs.com/package/gumo) [![CI](https://github.com/nvk681/Gumo/actions/workflows/ci.yml/badge.svg)](https://github.com/nvk681/Gumo/actions/workflows/ci.yml) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://gumo.mit-license.org/)
 
 ## Overview 👓
 
@@ -14,13 +14,16 @@ A web-crawler (get it?) and scraper that extracts data from a family of nested d
   - [Overview 👓](#overview-)
   - [Table of Contents 📖](#table-of-contents-)
   - [Features 🌟](#features-)
-  - [Installation 🏗️](#installation-️)
+  - [Requirements 📋](#requirements-)
+- [Installation 🏗️](#installation-️)
   - [Usage 👨‍💻](#usage-)
+  - [Development 🛠️](#development-)
   - [Configuration ⚙️](#configuration-️)
   - [ElasticSearch ⚡](#elasticsearch-)
   - [GraphDB ☋](#graphdb-)
     - [Nodes](#nodes)
     - [Relationships](#relationships)
+  - [Changelog](#changelog)
   - [TODO ☑️](#todo-️)
 
 ## Features 🌟
@@ -30,9 +33,22 @@ A web-crawler (get it?) and scraper that extracts data from a family of nested d
 - Store entire sitemap in a GraphDB (currently supports Neo4J).
 - Store page content in ElasticSearch for easy full-text lookup.
 
+## Requirements 📋
+
+- **Node.js** ≥ 24.0.0 (LTS). Pinned in `package.json` (`engines`) and `.nvmrc` for [nvm](https://github.com/nvm-sh/nvm) users.
+- **Neo4j** 4.0+ when using the graph (constraint syntax requires it).
+
 ## Installation 🏗️
 
 [![NPM](https://nodei.co/npm/gumo.png?mini=true)](https://nodei.co/npm/gumo/)
+
+1. Use Node 24+ (e.g. `nvm use` if you have [nvm](https://github.com/nvm-sh/nvm) and the repo’s `.nvmrc`).
+2. Install dependencies (uses `package-lock.json` for reproducible installs):
+
+   ```bash
+   npm install
+   ```
+   Or in CI: `npm ci`.
 
 ## Usage 👨‍💻
 
@@ -65,7 +81,19 @@ cron.configure({
 cron.insert()
 ```
 
-**Note: The config params passed to `cron.configure` above are the default values. Please refer to the [Configuration](#configuration-️) section below to learn more about the customization options that are available.**
+**Note:** The config params passed to `cron.configure` above are the default values. See [Configuration](#configuration-️) for all options.
+
+When using Gumo as a dependency (e.g. `require('gumo')` with no `config.json` in your project), in-package defaults are used so the module loads; pass your Elasticsearch, Neo4j, and crawler settings via `configure()` before calling `insert()`.
+
+### Development 🛠️
+
+| Script   | Description                          |
+| -------- | ------------------------------------ |
+| `npm run dev` | Run the crawler (`node index.js`).   |
+| `npm run lint` | Run [ESLint](https://eslint.org/) on the project (see `eslint.config.js`). |
+| `npm test`    | Run tests (placeholder until tests are added). |
+
+CI runs on [GitHub Actions](https://github.com/nvk681/Gumo/actions) (Node 24, lint + test) on push/PR to `main`/`master`.
 
 ## Configuration ⚙️
 
@@ -90,12 +118,7 @@ The behavior of the crawler can be customized by passing a custom configuration 
 
 ## ElasticSearch ⚡
 
-The content of the web page will be stored along with the url, and a hash. The index for the elastic search can be selected through config.json index attribute. If the index already exists in the elastic search it will be used, else it will create one.
-
-**id**: hash,
-**index**: config.index,
-**type**: 'pages',
-**body**: JSON.stringify(page content)
+Page content is stored with the URL and a hash. The index is set via the `elastic.index` config (or `config.json`). If the index does not exist, it is created. Gumo uses the official `@elastic/elasticsearch` client; each page is indexed with **id** = hash and **document** = the page object (no separate type field).
 
 ## GraphDB ☋
 
@@ -120,8 +143,13 @@ The sitemap of all the traversed pages is stored in a convenient graph. The foll
 | links_to   | (a)-[r1:links_to]->(b)   | b.link = a.parent |
 | links_from | (b)-[r2:links_from]->(a) | b.link = a.parent |
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history and upgrading notes (e.g. Node 24, Elasticsearch client, Neo4j driver in v2.0.0).
+
 ## TODO ☑️
 
 - [ ] Make it executable from CLI
 - [x] Enable to send config parameters while invoking the gumo
+- [x] CI (GitHub Actions, Node 24, lint + test)
 - [ ] Write more tests

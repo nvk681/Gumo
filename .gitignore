@@ -5,7 +5,6 @@
 
 # Node Stuff:
 node_modules
-package-lock.json
 
 # Temporary Directories:
 output
