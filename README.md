@@ -8,10 +8,23 @@
 
 A web-crawler (get it?) and scraper that extracts data from a family of nested dynamic webpages with added enhancements to assist in knowledge mining applications. Written in NodeJS.
 
+## Release history
+
+Gumo was first published on GitHub in April 2021.
+It was first published on [npm](https://www.npmjs.com/package/gumo) on 21 April 2021 and can be installed with `npm i gumo`.
+
+| Version | npm publish date | Summary |
+| --- | --- | --- |
+| 1.0.0–1.0.4 | 2021-04-21 | Initial npm release and same-day updates. |
+| 1.0.6 | 2021-04-26 | Added support for configuring the crawler and its stores from code. |
+| 1.0.7 | 2022-07-27 | Updated remaining references from Kumo to Gumo. |
+| 2.0.1 | 2026-02-18 | Modernization release requiring Node.js `>=24.0.0`, with updated Elasticsearch and Neo4j clients. |
+
 ## Table of Contents 📖
 
 - [🕸️Gumo](#️gumo)
   - [Overview 👓](#overview-)
+  - [Release history](#release-history)
   - [Table of Contents 📖](#table-of-contents-)
   - [Features 🌟](#features-)
   - [Requirements 📋](#requirements-)
@@ -24,7 +37,7 @@ A web-crawler (get it?) and scraper that extracts data from a family of nested d
     - [Nodes](#nodes)
     - [Relationships](#relationships)
   - [Changelog](#changelog)
-  - [TODO ☑️](#todo-️)
+  - [Roadmap](#roadmap)
 
 ## Features 🌟
 
@@ -32,6 +45,7 @@ A web-crawler (get it?) and scraper that extracts data from a family of nested d
 - Scrape meta-tags and body text from every page.
 - Store entire sitemap in a GraphDB (currently supports Neo4J).
 - Store page content in ElasticSearch for easy full-text lookup.
+- Use the same page URL hash as the Elasticsearch document ID and the Neo4j page node’s `pid`.
 
 ## Requirements 📋
 
@@ -145,9 +159,11 @@ The sitemap of all the traversed pages is stored in a convenient graph. The foll
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for version history and upgrading notes (e.g. Node 24, Elasticsearch client, Neo4j driver in v2.0.0).
+See [CHANGELOG.md](CHANGELOG.md) for upgrade notes and the [release history](#release-history) for npm publish dates.
 
-## TODO ☑️
+## Roadmap
+
+- [ ] Add automated cross-store integrity checks for Elasticsearch and Neo4j.
 
 - [ ] Make it executable from CLI
 - [x] Enable to send config parameters while invoking the gumo
