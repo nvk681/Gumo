@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.2] - 2026-11-24
+
+### Fixed
+
+- Corrected the author's surname spelling (Nuthalapati) in `package.json` contributors and `LICENSE`.
+
+[2.0.2]: https://github.com/nvk681/Gumo/compare/v2.0.1...v2.0.2
+
 ## [2.0.1] - 2025-02-17
 
 ### Changed

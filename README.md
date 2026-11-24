@@ -19,6 +19,7 @@ It was first published on [npm](https://www.npmjs.com/package/gumo) on 21 April 
 | 1.0.6 | 2021-04-26 | Added support for configuring the crawler and its stores from code. |
 | 1.0.7 | 2022-07-27 | Updated remaining references from Kumo to Gumo. |
 | 2.0.1 | 2026-02-18 | Modernization release requiring Node.js `>=24.0.0`, with updated Elasticsearch and Neo4j clients. |
+| 2.0.2 | 2026-11-24 | Corrected the author's surname spelling in package metadata and license. |
 
 ## Table of Contents 📖
 
